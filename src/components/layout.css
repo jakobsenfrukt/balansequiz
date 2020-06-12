@@ -102,7 +102,13 @@ h1 a {
 }
 
 section {
-  padding: 2rem;
+  padding: 5rem 2rem 7rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 section.pink {
@@ -116,4 +122,45 @@ section.green {
 section.darkgreen {
   background: #0F4138;
   color: #fff;
+}
+
+
+.options {
+  display: flex;
+  width: 80%;
+  max-width: 500px;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.options div {
+  background: #76C2AF;
+  padding: 1rem 2rem;
+  cursor: pointer;
+}
+
+.timeline-fact {
+  width: 80%;
+  max-width: 500px;
+  margin-bottom: 0;
+  align-self: flex-end;
+  text-align: left;
+}
+
+
+label {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+input[type="text"] {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin: 1rem auto;
+  font-family: inherit;
+  font-size: 1.5rem;
+  padding: 1rem 1.2rem;
+  border: 2px solid #000;
+  outline: none;
+  box-shadow: none;
 }

@@ -8,7 +8,12 @@ import SEO from "../components/seo"
 const IndexPage = () => (
   <Layout>
     <SEO title="Start" />
-    <h1>Hi people</h1>
+    <section className="green">
+      <h1>Velkommen!</h1>
+      <label>Hvilken organisasjon tilhører du?</label>
+      <input type="text"></input>
+      <p>Vi lagrer informasjonen anonymt. Vi spør fordi vi trenger det til rapporter til Kulturrådet blablabla.</p>
+    </section>
     <section className="pink">
       <h1>Yo</h1>
     </section>
@@ -21,14 +26,14 @@ const IndexPage = () => (
       <h1>Yo</h1>
     </section>
     <section>
-      <h1>Hvilket årstall skjedde det?</h1>
-      <p class="happening">Norge vedtar Likestillingsloven</p>
+      <p>Hvilket årstall?</p>
+      <h1>Norge vedtar Likestillingsloven</h1>
       <div class="options">
         <div>1812</div>
         <div>1925</div>
         <div>2018</div>
       </div>
-      <p>Lov om likestilling mellom kjønnene (Likestillingsloven) ble vedtatt 9. juni 1978 og trådte i kraft den 15. mars 1979.</p>
+      <p class="timeline-fact">Lov om likestilling mellom kjønnene (Likestillingsloven) ble vedtatt 9. juni 1978 og trådte i kraft den 15. mars 1979.</p>
     </section>
     <section className="darkgreen">
       <h1>Yo</h1>
