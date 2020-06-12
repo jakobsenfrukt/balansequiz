@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:500,700,900&display=swap');
+
+html {
+	font-size: calc(14px + 6 * ((100vw - 320px) / 1200));
+  height: 100%;
+  background: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+
+  background-color: #fff;
+  color: #000;
+  font-family: 'work sans', helvetica, arial, sans-serif;
+  line-height: 1.4;
+}
+
+.site-main {
+  padding: 2rem 2rem 7rem;
+}
+
+.page {
+  position: relative;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+  margin: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 900;
+  font-size: 1rem;
+  line-height: 1.1;
+  margin: 0 auto 2rem;
+}
+
+h1 {
+  font-size: 3.6rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 800px) {
+  h1 {
+    font-size: 2.8rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin: 0 auto 1rem;
+}
+
+ul {
+  margin: 0;
+  padding: 0 1.2rem;
+}
+
+.site-header, .site-footer {
+  text-align: center;
+}
+
+h1 a {
+  text-decoration: none;
+}
