@@ -270,11 +270,12 @@ section.invert {
 label {
   font-size: 1.5rem;
   font-weight: 700;
+  width: 100%;
+  max-width: 600px;
 }
 input[type="text"] {
   display: block;
   width: 100%;
-  max-width: 500px;
   margin: 1rem auto;
   font-family: inherit;
   font-size: 1.5rem;
@@ -282,6 +283,11 @@ input[type="text"] {
   border: 3px solid #000;
   outline: none;
   box-shadow: none;
+  transition: all .2s ease;
+}
+input[type="text"]:focus, input[type="text"]:hover {
+  box-shadow: 0 9px 0 -6px #000;
+  transform: scale(1.025);
 }
 
 
