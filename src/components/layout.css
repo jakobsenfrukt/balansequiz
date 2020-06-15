@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:500,700,900&display=swap');
 
 html {
-	font-size: calc(14px + 6 * ((100vw - 320px) / 1200));
+	font-size: calc(14px + 6 * ((100vw - 320px) / 1000));
   height: 100%;
   background: #fff;
 }
@@ -24,8 +24,15 @@ body {
   line-height: 1.4;
 }
 
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+}
+
 .site-main {
-  padding: 2rem 0 7rem;
+  padding: 0 0 7rem;
 }
 
 .page {
@@ -45,7 +52,8 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6, p, ul, ol {
-  margin: auto;
+  margin: 1rem auto;
+  max-width: 800px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -85,12 +93,24 @@ h4 {
 }
 
 p {
+  max-width: 500px;
   margin: 0 auto 1rem;
 }
 
 ul {
   margin: 0;
   padding: 0 1.2rem;
+}
+
+blockquote {
+  font-size: 4rem;
+  line-height: 1.1;
+}
+blockquote:before {
+  content: '”';
+  display: block;
+  font-size: 10rem;
+  line-height: .8;
 }
 
 .site-header, .site-footer {
@@ -109,6 +129,7 @@ section {
   align-items: center;
   justify-content: center;
   text-align: center;
+  position: relative;
 }
 
 section.pink {
@@ -122,6 +143,24 @@ section.green {
 section.darkgreen {
   background: #0F4138;
   color: #fff;
+}
+
+.chapter-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  opacity: .5;
+  padding: 1rem;
+}
+
+.chapter-no {
+  display: block;
+  font-size: 1rem;
+  margin: 0 auto 1rem;
 }
 
 
