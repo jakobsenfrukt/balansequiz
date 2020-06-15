@@ -136,6 +136,7 @@ blockquote:before {
   display: block;
   font-size: 10rem;
   line-height: .8;
+  margin-top: -4rem;
 }
 
 .site-header, .site-footer {
