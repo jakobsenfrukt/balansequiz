@@ -5,6 +5,10 @@ import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 
+const nextSlide = () => (
+  window.scrollBy(0, window.innerHeight)
+)
+
 const IndexPage = () => (
   <Layout>
     <SEO title="Start" />
@@ -65,7 +69,7 @@ const IndexPage = () => (
     &rarr; <Link to="/page-2/">Go to page 2</Link> <br />
     <nav class="slide-nav">
       <span className="arrow-text left">Klikk for å</span>
-      <div className="arrow-next-slide">&darr;</div>
+      <div className="arrow-next-slide" onClick={nextSlide}>&darr;</div>
       <span className="arrow-text right">gå til neste</span>
     </nav>
   </Layout>

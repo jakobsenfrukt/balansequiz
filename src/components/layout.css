@@ -4,6 +4,7 @@ html {
 	font-size: calc(14px + 6 * ((100vw - 320px) / 1200));
   height: 100%;
   background: #fff;
+  scroll-behavior: smooth;
 }
 
 * {
@@ -146,7 +147,7 @@ h1 a {
 }
 
 section {
-  padding: 5rem 2rem 7rem;
+  padding: 5rem 2rem 9rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
