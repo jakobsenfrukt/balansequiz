@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:500,700,900&display=swap');
 
 html {
-	font-size: calc(14px + 6 * ((100vw - 320px) / 1000));
+	font-size: calc(14px + 6 * ((100vw - 320px) / 1200));
   height: 100%;
   background: #fff;
 }
@@ -28,7 +28,16 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  padding: 1rem;
+  padding: 2rem;
+  z-index: 2;
+}
+
+.site-title {
+  font-size: 1rem;
+}
+
+.logo {
+  width: 12rem;
 }
 
 .site-main {
@@ -98,8 +107,23 @@ p {
 }
 
 ul {
+  list-style: none;
   margin: 0;
   padding: 0 1.2rem;
+  text-align: left;
+}
+ul li {
+  margin-bottom: 1.4rem;
+  position: relative;
+}
+ul li:before {
+  content: url(../images/wave.svg);
+  width: 1em;
+  height: 1em;
+  display: block;
+  position: absolute;
+  top: -.15em;
+  left: -1.5em;
 }
 
 blockquote {
@@ -164,6 +188,13 @@ section.darkgreen {
 }
 
 
+.information {
+  opacity: .5;
+  margin: 1rem 0 1rem auto;
+  font-size: 14px;
+}
+
+
 .options {
   display: flex;
   width: 80%;
@@ -172,11 +203,44 @@ section.darkgreen {
   margin: auto;
 }
 
-.options div {
+.option-button {
   background: #76C2AF;
   padding: 1rem 2rem;
   cursor: pointer;
+  border-radius: 6px;
+  transition: all .2s ease;
 }
+.option-button:hover {
+  transform: scale(1.1);
+}
+
+.timeline-wrapper {
+  width: calc(100% + 4rem);
+  height: 140px;
+  overflow: hidden;
+}
+
+.timeline-scroll {
+  width: 100%;
+  height: 160px;
+  overflow-x: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline {
+  width: 3000px;
+  height: .3rem;
+  background: #0F4138;
+}
+
+.timeline .options {
+  transform: translateY(-50%);
+}
+
+
 
 .timeline-fact {
   width: 80%;
@@ -199,7 +263,43 @@ input[type="text"] {
   font-family: inherit;
   font-size: 1.5rem;
   padding: 1rem 1.2rem;
-  border: 2px solid #000;
+  border: 3px solid #000;
   outline: none;
   box-shadow: none;
+}
+
+
+.slide-nav {
+  position: fixed;
+  bottom: 2rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.arrow-text {
+  opacity: .5;
+  font-size: 14px;
+}
+.arrow-text.left {
+  margin: 0 .6rem 0 auto;
+}
+.arrow-text.right {
+  margin: 0 auto 0 .6rem;
+}
+.arrow-next-slide {
+  width: 3rem;
+  height: 3rem;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  line-height: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all .2s ease;
+  transform-origin: 50% 50%;
+}
+.arrow-next-slide:hover {
+  transform: scale(1.1);
 }
