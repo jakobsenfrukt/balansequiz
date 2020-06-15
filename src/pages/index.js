@@ -20,7 +20,7 @@ const IndexPage = () => (
       </label>
       <p>Vi lagrer informasjonen anonymt. Vi spør fordi vi trenger det til rapporter til Kulturrådet blablabla.</p>
     </section>
-    <section className="pink">
+    <section className="pink invert">
       <h1>
         <span className="chapter-no">Del 1</span> En overskrift til en del av kurset
       </h1>
@@ -28,7 +28,7 @@ const IndexPage = () => (
     <section>
       <header className="chapter-header">Del 1: Seksuell trakassering i tall</header>
       <p>Tall fra Statistisk Sentralbyrå viser at</p>
-      <h1>4 %</h1>
+      <span class="statistics-number">4 %</span>
       <p>av sysselsatte i Norge opplever uønsket seksuell oppmerksomhet, kommentarer eller lignende, et par ganger i måneden eller oftere.</p>
     </section>
     <section className="green">
@@ -56,16 +56,23 @@ const IndexPage = () => (
       <p className="information">Klikk eller scroll for å se hele &rarr;</p>
       <p className="timeline-fact">Lov om likestilling mellom kjønnene (Likestillingsloven) ble vedtatt 9. juni 1978 og trådte i kraft den 15. mars 1979.</p>
     </section>
-    <section className="darkgreen">
+    <section className="darkgreen invert">
       <h1>Yo</h1>
+      <ul>
+        <li>hei</li>
+        <li>dette er</li>
+        <li>en kul liste</li>
+      </ul>
+      <Image />
     </section>
     <section>
       <blockquote>Hvorfor sa du ikke bare nei?</blockquote>
       <p>Mange som forteller om opplevelser med seksuell trakassering og overgrep blir møtt med spørsmål om hva de selv gjorde for å sette grenser.</p>
     </section>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
+    <section class="darkgreen invert">
+      <blockquote>Hvorfor sa du ikke bare nei?</blockquote>
+      <p>Mange som forteller om opplevelser med seksuell trakassering og overgrep blir møtt med spørsmål om hva de selv gjorde for å sette grenser.</p>
+    </section>
     &rarr; <Link to="/page-2/">Go to page 2</Link> <br />
     <nav class="slide-nav">
       <span className="arrow-text left">Klikk for å</span>

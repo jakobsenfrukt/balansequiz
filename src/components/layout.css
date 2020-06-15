@@ -126,6 +126,9 @@ ul li:before {
   top: -.15em;
   left: -1.5em;
 }
+section.invert ul li:before {
+  content: url(../images/wave-white.svg);
+}
 
 blockquote {
   font-size: 4rem;
@@ -160,7 +163,6 @@ section {
 
 section.pink {
   background: #E269A3;
-  color: #fff;
 }
 section.green {
   background: #76C2AF;
@@ -168,6 +170,8 @@ section.green {
 }
 section.darkgreen {
   background: #0F4138;
+}
+section.invert {
   color: #fff;
 }
 
@@ -194,6 +198,16 @@ section.darkgreen {
   opacity: .5;
   margin: 1rem 0 1rem auto;
   font-size: 14px;
+}
+
+
+.statistics-number {
+  font-size: 10rem;
+  color: #E269A3;
+  display: block;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 1rem;
 }
 
 
