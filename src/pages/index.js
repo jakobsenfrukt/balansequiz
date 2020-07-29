@@ -92,12 +92,24 @@ const IndexPage = () => (
         blir møtt med spørsmål om hva de selv gjorde for å sette grenser.
       </p>
     </section>
-    <section className="darkgreen invert">
-      <blockquote>Hvorfor sa du ikke bare nei?</blockquote>
-      <p>
-        Mange som forteller om opplevelser med seksuell trakassering og overgrep
-        blir møtt med spørsmål om hva de selv gjorde for å sette grenser.
-      </p>
+    <section class="pink split">
+      <div class="column">
+        <h2>
+          En overskrift til en del av kurset
+        </h2>
+      </div>
+      <div class="column">
+        <p>Et annet eksempel på tolkning og tall:</p>
+        <p>EU gjorde for noen år siden en studie av forekomsten av seksuell trakassering og kjønnsbasert vold blant kvinner i EU-land. Det landet som rapporterer om høyest forekomst av seksuell trakassering er Sverige, hvor 81 % av kvinnene oppgir å ha opplevd seksuell trakassering. I Spania og Italia er tallet på rundt 50 % og i Polen er det rundt 40 %.</p>
+        <p>Det er lite trolig at Sverige sliter med mer seksuell trakassering sammenliknet med resten av Europa. I stedet handler dette om at det finnes en høyere bevissthet om tematikken i Sverige som gjør at flere svenske kvinner setter ord på uønsket seksuell oppmerksomhet som seksuell trakassering.</p>
+      </div>
+    </section>
+    <section class="darkgreen invert">
+      <p>Et annet eksempel på tolkning og tall:</p>
+      <p>EU gjorde for noen år siden en studie av forekomsten av seksuell trakassering og kjønnsbasert vold blant kvinner i EU-land. Det landet som rapporterer om høyest forekomst av seksuell trakassering er Sverige, hvor 81 % av kvinnene oppgir å ha opplevd seksuell trakassering. I Spania og Italia er tallet på rundt 50 % og i Polen er det rundt 40 %.</p>
+      <p>Det er lite trolig at Sverige sliter med mer seksuell trakassering sammenliknet med resten av Europa. I stedet handler dette om at det finnes en høyere bevissthet om tematikken i Sverige som gjør at flere svenske kvinner setter ord på uønsket seksuell oppmerksomhet som seksuell trakassering.</p> 
+      <p>Det er lite trolig at Sverige sliter med mer seksuell trakassering sammenliknet med resten av Europa. I stedet handler dette om at det finnes en høyere bevissthet om tematikken i Sverige som gjør at flere svenske kvinner setter ord på uønsket seksuell oppmerksomhet som seksuell trakassering.</p> 
+      <p>Det er lite trolig at Sverige sliter med mer seksuell trakassering sammenliknet med resten av Europa. I stedet handler dette om at det finnes en høyere bevissthet om tematikken i Sverige som gjør at flere svenske kvinner setter ord på uønsket seksuell oppmerksomhet som seksuell trakassering.</p>  
     </section>
     &rarr; <Link to="/page-2/">Go to page 2</Link> <br />
     <nav className="slide-nav">

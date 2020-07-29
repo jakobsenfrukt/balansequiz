@@ -152,13 +152,14 @@ h1 a {
 
 section {
   padding: 5rem 2rem 9rem;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
+  background: #f6f6f6;
 }
 
 section.pink {
@@ -173,6 +174,28 @@ section.darkgreen {
 }
 section.invert {
   color: #fff;
+}
+
+section.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0;
+}
+
+section.pink.split .column:first-of-type {
+  background: #E269A3;
+}
+section.pink.split .column {
+  background: white;
+}
+
+.column {
+  padding: 5rem 2rem 9rem;
+  height: 100%;
+}
+
+.column h2, .column p {
+  text-align: left;
 }
 
 .chapter-header {
