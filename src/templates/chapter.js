@@ -39,8 +39,6 @@ const ChapterPage = ({ data, pageContext }) => {
   const { entry: chapter } = data.balanse
   const { title, slug, slide } = chapter
 
-  console.log(chapter)
-
   return (
     <Layout>
       <ChapterTemplate title={title} slug={slug} index={index} slides={slide} />

@@ -21,7 +21,7 @@ const Slide = ({ data, index }) => {
     return (
       <section className="slide">
         <div
-          className="slide__content"
+          className="slide__content single-column"
           dangerouslySetInnerHTML={{ __html: text.content }}
         />
       </section>
