@@ -2,10 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
-
-const nextSlide = () => window.scrollBy(0, window.innerHeight)
 
 const IndexPage = () => (
   <Layout>
@@ -33,22 +30,6 @@ const IndexPage = () => (
         </p>
       </div>
     </section>
-    <section className="slide">
-      <div className="slide__content">
-        <blockquote>Hvorfor sa du ikke bare nei?</blockquote>
-        <p>
-          Mange som forteller om opplevelser med seksuell trakassering og overgrep
-          blir møtt med spørsmål om hva de selv gjorde for å sette grenser.
-        </p>
-      </div>
-    </section>
-    <nav className="slide-nav">
-      <span className="arrow-text left">Klikk for å</span>
-      <div className="arrow-next-slide" onClick={nextSlide}>
-        &darr;
-      </div>
-      <span className="arrow-text right">gå til neste</span>
-    </nav>
   </Layout>
 )
 
