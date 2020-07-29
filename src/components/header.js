@@ -6,7 +6,7 @@ import Logo from "../images/logo.svg"
 const Header = ({ siteTitle }) => (
   <header className="site-header">
     <div>
-      <h1 class="site-title">
+      <h1 className="site-title">
         <Link to="/">
           <img className="logo" src={Logo} />
         </Link>
