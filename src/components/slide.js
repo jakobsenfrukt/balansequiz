@@ -39,6 +39,21 @@ const Slide = ({ data }) => {
       </section>
     )
   }
+  if (type === "Balanse_SlideSitat") {
+    const { quote, quoteDescription } = data
+    return (
+      <section className="slide-quote">
+        <div
+          className="quote"
+          dangerouslySetInnerHTML={{ __html: quote.content }}
+        />
+        <div
+          className="quote-description"
+          dangerouslySetInnerHTML={{ __html: quoteDescription.content }}
+        />
+      </section>
+    )
+  }
   return (
     <p>
       Unhandled slide type <em>{type}</em>

@@ -79,6 +79,14 @@ export const chapterQuery = graphql`
                 content
               }
             }
+            ... on Balanse_SlideSitat {
+              quote {
+                content
+              }
+              quoteDescription {
+                content
+              }
+            }
           }
         }
       }
