@@ -1,6 +1,8 @@
 import PropTypes from "prop-types"
 import React from "react"
 
+import { convertToRoman } from "../utils"
+
 const Slide = ({ data, index }) => {
   const { __typename: type } = data
   if (type === "Balanse_SlideKapittelforside") {
@@ -9,7 +11,9 @@ const Slide = ({ data, index }) => {
     return (
       <section className="slide slide--chapter-front">
         <div className="slide__content">
-          {index !== 0 && <span className="chapter-no">Del {index}</span>}
+          {index !== 0 && (
+            <span className="chapter-no">Del {convertToRoman(index)}</span>
+          )}
           <h1>{title}</h1>
           {imageUrl && <img src={imageUrl} />}
         </div>

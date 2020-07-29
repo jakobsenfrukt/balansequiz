@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { graphql } from "gatsby"
 // import Img from "gatsby-image"
 // import Meta from "../components/Meta"
+import { convertToRoman } from "../utils"
 import Layout from "../components/layout"
 import Slide from "../components/slide"
 
@@ -11,11 +12,13 @@ const nextSlide = () => window.scrollBy(0, window.innerHeight)
 export const ChapterTemplate = ({ title, slug, index, slides }) => {
   return (
     <>
-      {index !== 0 &&
-        <header className="chapter-header">Del {index}: {title}</header>
-      }
+      {index !== 0 && (
+        <header className="chapter-header">
+          Del {convertToRoman(index)}: {title}
+        </header>
+      )}
       {slides.map(slide => (
-          <Slide data={slide} index={index} />
+        <Slide data={slide} index={index} />
       ))}
       <nav className="slide-nav">
         <span className="arrow-text left">Klikk for å</span>
