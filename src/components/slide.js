@@ -9,9 +9,7 @@ const Slide = ({ data, index }) => {
     return (
       <section className="slide slide--chapter-front">
         <div className="slide__content">
-          {index !== 0 &&
-            <span className="chapter-no">Del {index}</span>
-          }
+          {index !== 0 && <span className="chapter-no">Del {index}</span>}
           <h1>{title}</h1>
           {imageUrl && <img src={imageUrl} />}
         </div>
@@ -22,7 +20,7 @@ const Slide = ({ data, index }) => {
     const { text } = data
     return (
       <section className="slide">
-        <div 
+        <div
           className="slide__content"
           dangerouslySetInnerHTML={{ __html: text.content }}
         />
@@ -51,9 +49,7 @@ const Slide = ({ data, index }) => {
     return (
       <section className="slide">
         <div className="slide__content">
-          <blockquote
-            dangerouslySetInnerHTML={{ __html: quote.content }}
-          />
+          <blockquote>{quote}</blockquote>
           <div
             className="quote-description"
             dangerouslySetInnerHTML={{ __html: quoteDescription.content }}
