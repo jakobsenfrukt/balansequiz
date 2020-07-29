@@ -111,7 +111,6 @@ const IndexPage = () => (
       <p>Det er lite trolig at Sverige sliter med mer seksuell trakassering sammenliknet med resten av Europa. I stedet handler dette om at det finnes en høyere bevissthet om tematikken i Sverige som gjør at flere svenske kvinner setter ord på uønsket seksuell oppmerksomhet som seksuell trakassering.</p> 
       <p>Det er lite trolig at Sverige sliter med mer seksuell trakassering sammenliknet med resten av Europa. I stedet handler dette om at det finnes en høyere bevissthet om tematikken i Sverige som gjør at flere svenske kvinner setter ord på uønsket seksuell oppmerksomhet som seksuell trakassering.</p>  
     </section>
-    &rarr; <Link to="/page-2/">Go to page 2</Link> <br />
     <nav className="slide-nav">
       <span className="arrow-text left">Klikk for å</span>
       <div className="arrow-next-slide" onClick={nextSlide}>
