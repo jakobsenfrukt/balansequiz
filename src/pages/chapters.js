@@ -8,16 +8,18 @@ const TableOfContents = ({ data }) => {
   return (
     <Layout>
       {/* <SEO title="Page two" /> */}
-      <section>
-      <h1>Kapitler</h1>
-      <p>:)</p>
-      <ul>
-        {chapters.map(chapter => (
-          <li>
-            <Link to={`/${chapter.slug}`}>{chapter.title}</Link>
-          </li>
-        ))}
-      </ul>
+      <section className="slide">
+        <div className="slide__content">
+          <h1>Kapitler</h1>
+          <p>:)</p>
+          <ul>
+            {chapters.map(chapter => (
+              <li>
+                <Link to={`/${chapter.slug}`}>{chapter.title}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
     </Layout>
   )

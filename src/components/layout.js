@@ -27,9 +27,6 @@ const Layout = ({ children }) => {
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
       <main className="site-main">{children}</main>
-      <footer className="site-footer">
-        <a href="https://www.balansemerket.no">Balansemerket</a>
-      </footer>
     </>
   )
 }

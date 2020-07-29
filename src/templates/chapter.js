@@ -6,18 +6,24 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Slide from "../components/slide"
 
+const nextSlide = () => window.scrollBy(0, window.innerHeight)
+
 export const ChapterTemplate = ({ title, slug, index, slides }) => {
   return (
     <>
-
-    <section>
-      <h1>{title}</h1>
-      <div>Kapittel {index}</div>
-      <div>Slug: {slug}</div>
-    </section>
+      {index !== 0 &&
+        <header className="chapter-header">Del {index}: {title}</header>
+      }
       {slides.map(slide => (
-          <Slide data={slide} />
+          <Slide data={slide} index={index} />
       ))}
+      <nav className="slide-nav">
+        <span className="arrow-text left">Klikk for å</span>
+        <div className="arrow-next-slide" onClick={nextSlide}>
+          &darr;
+        </div>
+        <span className="arrow-text right">gå til neste</span>
+      </nav>
     </>
   )
 }
