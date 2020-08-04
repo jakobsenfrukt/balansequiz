@@ -6,10 +6,11 @@ import { graphql } from "gatsby"
 import { convertToRoman } from "../utils"
 import Layout from "../components/layout"
 import Slide from "../components/slide"
+import Timeline from "../components/timeline"
 
 const nextSlide = () => window.scrollBy(0, window.innerHeight)
 
-export const ChapterTemplate = ({ title, slug, index, slides }) => {
+export const ChapterTemplate = ({ title, slug, index, slides, timeline }) => {
   return (
     <>
       {index !== 0 && (
@@ -20,6 +21,7 @@ export const ChapterTemplate = ({ title, slug, index, slides }) => {
       {slides.map(slide => (
         <Slide data={slide} index={index} />
       ))}
+      {timeline && <Timeline data={timeline} />}
       <nav className="slide-nav">
         <span className="arrow-text left">Klikk for å</span>
         <div className="arrow-next-slide" onClick={nextSlide}>
@@ -39,12 +41,23 @@ ChapterTemplate.propTypes = {
 
 const ChapterPage = ({ data, pageContext }) => {
   const { index } = pageContext
-  const { entry: chapter } = data.balanse
-  const { title, slug, slide } = chapter
+  const { chapter } = data.balanse
+  const { title, slug, slides, timelines } = chapter
+
+  console.log(timelines)
+
+  // Limit to one timeline per chapter for now
+  const timeline = timelines.length != 0 ? timelines[0] : null
 
   return (
     <Layout>
-      <ChapterTemplate title={title} slug={slug} index={index} slides={slide} />
+      <ChapterTemplate
+        title={title}
+        slug={slug}
+        index={index}
+        slides={slides}
+        timeline={timeline}
+      />
     </Layout>
   )
 }
@@ -58,13 +71,14 @@ export default ChapterPage
 export const chapterQuery = graphql`
   query ChapterById($id: Int!) {
     balanse {
-      entry(id: [$id]) {
+      chapter: entry(id: [$id]) {
+        id
         title
         slug
         ... on Balanse_KursKurskapittel {
           title
           slug
-          slide {
+          slides: slide {
             __typename
             ... on Balanse_SlideKapittelforside {
               chapterTitle
@@ -90,6 +104,24 @@ export const chapterQuery = graphql`
               quote
               quoteDescription {
                 content
+              }
+            }
+          }
+        }
+        timelines: children(type: [KursTidslinjeoppgave]) {
+          __typename
+          id
+          ... on Balanse_KursTidslinjeoppgave {
+            title
+            tasks: timelineTask {
+              __typename
+              ... on Balanse_TimelineTaskEvent {
+                id
+                toBePlaced
+                year
+                furtherInformation {
+                  content
+                }
               }
             }
           }
