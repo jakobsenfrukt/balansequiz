@@ -15,7 +15,7 @@ const Slide = ({ data, index }) => {
             <span className="chapter-no">Del {convertToRoman(index)}</span>
           )}
           <h1>{title}</h1>
-          {imageUrl && <img src={imageUrl} />}
+          {imageUrl && <img src={imageUrl} alt="" />}
         </div>
       </section>
     )
