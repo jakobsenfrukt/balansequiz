@@ -1,8 +1,7 @@
 const path = require("path")
 
 // Craft entries may be 'live', 'pending', 'expired' or 'disabled'
-const getOnlyPublished = edges =>
-  edges.filter(({ node }) => node.status === "live")
+const getOnlyPublished = edges => edges.filter(node => node.status === "live")
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
