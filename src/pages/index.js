@@ -52,6 +52,15 @@ const IndexPage = () => (
       </div>
     </section>
     <Risk />
+    <section className="slide">
+      <h2 className="quiz-heading">Spørsmål 1/8</h2>
+      <p className="quiz-question">Hvordan defineres seksuell trakassering i Likestillings- og diskrimineringsloven?</p>
+      <ol className="quiz-options">
+        <li className="quiz-option-button">seksuell oppmerksomhet</li>
+        <li className="quiz-option-button">uønsket seksuell oppmerksomhet</li>
+        <li className="quiz-option-button">ubehagelig seksuell oppmerksomhet</li>
+      </ol>
+    </section>
   </Layout>
 )
 
