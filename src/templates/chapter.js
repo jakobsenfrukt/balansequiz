@@ -44,8 +44,6 @@ const ChapterPage = ({ data, pageContext }) => {
   const { chapter } = data.balanse
   const { title, slug, slides, timelines } = chapter
 
-  console.log(timelines)
-
   // Limit to one timeline per chapter for now
   const timeline = timelines.length != 0 ? timelines[0] : null
 
