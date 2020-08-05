@@ -386,3 +386,42 @@ input[type="text"]:focus, input[type="text"]:hover {
 .arrow-next-slide:hover {
   transform: scale(1.1);
 }
+
+
+ /* på linje */
+ .statement-heading {
+   font-size: 2.5rem;
+ }
+.statement {
+  font-size: 3rem;
+  width: 90%;
+  max-width: 1200px;
+  line-height: 1.2;
+  margin-bottom: 3rem;
+}
+.poll-options {
+  display: flex;
+  width: 80%;
+  max-width: 800px;
+  justify-content: space-between;
+  margin: 0 auto 2rem;
+}
+.poll-option-label {
+  line-height: 3rem;
+  margin: 0 1rem;
+}
+.poll-option-button {
+  background: #000;
+  color: #fff;
+  width: 3rem;
+  height: 3rem;
+  line-height: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all .2s ease;
+}
+.poll-option-button:hover {
+  transform: scale(1.1);
+}
