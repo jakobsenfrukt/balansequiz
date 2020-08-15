@@ -1,3 +1,16 @@
+export const buttonize = handler => {
+  return {
+    role: "button",
+    onClick: handler,
+    onKeyDown: event => {
+      // 13 = Enter
+      if (event.keyCode === 13) {
+        handler(event)
+      }
+    },
+  }
+}
+
 export const convertToRoman = num => {
   const roman = {
     M: 1000,

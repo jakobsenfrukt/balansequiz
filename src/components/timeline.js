@@ -1,5 +1,6 @@
-import PropTypes from "prop-types"
+// import PropTypes from "prop-types"
 import React, { useState } from "react"
+import { buttonize } from "../utils"
 
 const Timeline = ({ data }) => {
   const [currentTask, setCurrentTask] = useState(0)
@@ -33,7 +34,7 @@ const Timeline = ({ data }) => {
   }
 
   if (complete) {
-    return <section className="slide">Du klarte det! 🥇</section>
+    return <section className="slide">Du klarte det!</section>
   }
 
   return (
@@ -48,8 +49,7 @@ const Timeline = ({ data }) => {
                 return (
                   <div
                     className="option-button"
-                    role="button"
-                    onClick={() => makeChoice(choice)}
+                    {...buttonize(() => makeChoice(choice))}
                   >
                     {choice}
                   </div>
@@ -67,7 +67,7 @@ const Timeline = ({ data }) => {
         />
       )}
       {showFact && (
-        <div className="option-button" role="button" onClick={nextTask}>
+        <div className="option-button" {...buttonize(nextTask)}>
           ok fett
         </div>
       )}

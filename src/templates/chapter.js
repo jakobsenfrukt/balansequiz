@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { graphql } from "gatsby"
 // import Img from "gatsby-image"
 // import Meta from "../components/Meta"
-import { convertToRoman } from "../utils"
+import { buttonize, convertToRoman } from "../utils"
 import Layout from "../components/layout"
 import Slide from "../components/slide"
 import Timeline from "../components/timeline"
@@ -24,7 +24,7 @@ export const ChapterTemplate = ({ title, slug, index, slides, timeline }) => {
       {timeline && <Timeline data={timeline} />}
       <nav className="slide-nav">
         <span className="arrow-text left">Klikk for å</span>
-        <div className="arrow-next-slide" onClick={nextSlide}>
+        <div className="arrow-next-slide" {...buttonize(nextSlide)}>
           &darr;
         </div>
         <span className="arrow-text right">gå til neste</span>
@@ -45,7 +45,7 @@ const ChapterPage = ({ data, pageContext }) => {
   const { title, slug, slides, timelines } = chapter
 
   // Limit to one timeline per chapter for now
-  const timeline = timelines.length != 0 ? timelines[0] : null
+  const timeline = timelines.length !== 0 ? timelines[0] : null
 
   return (
     <Layout>
