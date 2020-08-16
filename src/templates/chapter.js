@@ -7,10 +7,18 @@ import { buttonize, convertToRoman } from "../utils"
 import Layout from "../components/layout"
 import Slide from "../components/slide"
 import Timeline from "../components/timeline"
+import Quiz from "../components/quiz"
 
 const nextSlide = () => window.scrollBy(0, window.innerHeight)
 
-export const ChapterTemplate = ({ title, slug, index, slides, timeline }) => {
+export const ChapterTemplate = ({
+  title,
+  slug,
+  index,
+  slides,
+  timeline,
+  quiz,
+}) => {
   return (
     <>
       {index !== 0 && (
@@ -22,6 +30,7 @@ export const ChapterTemplate = ({ title, slug, index, slides, timeline }) => {
         <Slide data={slide} index={index} />
       ))}
       {timeline && <Timeline data={timeline} />}
+      {quiz && <Quiz data={quiz} />}
       <nav className="slide-nav">
         <span className="arrow-text left">Klikk for å</span>
         <div className="arrow-next-slide" {...buttonize(nextSlide)}>
@@ -42,10 +51,13 @@ ChapterTemplate.propTypes = {
 const ChapterPage = ({ data, pageContext }) => {
   const { index } = pageContext
   const { chapter } = data.balanse
-  const { title, slug, slides, timelines } = chapter
+  const { title, slug, slides, timelines, quizzes } = chapter
 
   // Limit to one timeline per chapter for now
   const timeline = timelines.length !== 0 ? timelines[0] : null
+
+  // Limit to one quiz per chapter for now
+  const quiz = quizzes.length !== 0 ? quizzes[0] : null
 
   return (
     <Layout>
@@ -55,6 +67,7 @@ const ChapterPage = ({ data, pageContext }) => {
         index={index}
         slides={slides}
         timeline={timeline}
+        quiz={quiz}
       />
     </Layout>
   )
@@ -120,6 +133,23 @@ export const chapterQuery = graphql`
                 furtherInformation {
                   content
                 }
+              }
+            }
+          }
+        }
+        quizzes: children(type: [KursQuiz]) {
+          __typename
+          id
+          ... on Balanse_KursQuiz {
+            title
+            tasks: quiz {
+              __typename
+              ... on Balanse_QuizQuizTask {
+                question
+                answerA
+                answerB
+                answerC
+                rightAnswer
               }
             }
           }
