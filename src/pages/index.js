@@ -4,8 +4,6 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-import Risk from "../components/risk"
-
 const IndexPage = () => (
   <Layout>
     <SEO title="Start" />
@@ -51,7 +49,6 @@ const IndexPage = () => (
         <div className="poll-option-label">Enig</div>
       </div>
     </section>
-    <Risk />
     <section className="slide">
       <h2 className="quiz-heading">Spørsmål 1/8</h2>
       <p className="quiz-question">Hvordan defineres seksuell trakassering i Likestillings- og diskrimineringsloven?</p>

@@ -8,6 +8,7 @@ import Layout from "../components/layout"
 import Slide from "../components/slide"
 import Timeline from "../components/timeline"
 import Quiz from "../components/quiz"
+import Risks from "../components/risk"
 
 const nextSlide = () => window.scrollBy(0, window.innerHeight)
 
@@ -18,6 +19,7 @@ export const ChapterTemplate = ({
   slides,
   timeline,
   quiz,
+  risks,
 }) => {
   return (
     <>
@@ -27,10 +29,11 @@ export const ChapterTemplate = ({
         </header>
       )}
       {slides.map(slide => (
-        <Slide data={slide} index={index} />
+        <Slide key={index} data={slide} index={index} />
       ))}
       {timeline && <Timeline data={timeline} />}
       {quiz && <Quiz data={quiz} />}
+      {risks && <Risks data={risks} />}
       <nav className="slide-nav">
         <span className="arrow-text left">Klikk for å</span>
         <div className="arrow-next-slide" {...buttonize(nextSlide)}>
@@ -51,13 +54,12 @@ ChapterTemplate.propTypes = {
 const ChapterPage = ({ data, pageContext }) => {
   const { index } = pageContext
   const { chapter } = data.balanse
-  const { title, slug, slides, timelines, quizzes } = chapter
+  const { title, slug, slides, timelines, quizzes, riskFactors } = chapter
 
-  // Limit to one timeline per chapter for now
+  // Limit to one timeline, quiz and risk factor section per chapter for now
   const timeline = timelines.length !== 0 ? timelines[0] : null
-
-  // Limit to one quiz per chapter for now
   const quiz = quizzes.length !== 0 ? quizzes[0] : null
+  const risks = riskFactors.length !== 0 ? riskFactors[0] : null
 
   return (
     <Layout>
@@ -68,6 +70,7 @@ const ChapterPage = ({ data, pageContext }) => {
         slides={slides}
         timeline={timeline}
         quiz={quiz}
+        risks={risks}
       />
     </Layout>
   )
@@ -150,6 +153,23 @@ export const chapterQuery = graphql`
                 answerB
                 answerC
                 rightAnswer
+              }
+            }
+          }
+        }
+        riskFactors: children(type: [KursRisikofaktorer]) {
+          __typename
+          id
+          ... on Balanse_KursRisikofaktorer {
+            title
+            risks: riskFactors {
+              __typename
+              ... on Balanse_RiskFactorsRiskFactor {
+                riskTitle
+                description
+                measures {
+                  content
+                }
               }
             }
           }

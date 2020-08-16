@@ -14,7 +14,7 @@ const TableOfContents = ({ data }) => {
           <p>:)</p>
           <ul>
             {chapters.map(chapter => (
-              <li>
+              <li key={chapter.id}>
                 <Link to={`/${chapter.slug}`}>{chapter.title}</Link>
               </li>
             ))}

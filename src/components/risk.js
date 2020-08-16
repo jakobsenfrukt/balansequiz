@@ -1,16 +1,63 @@
-import React from "react"
+import React, { useState } from "react"
+import { buttonize } from "../utils"
 
-const Risks = ({ siteTitle }) => (
-  <section className="slide">
-    <h2 className="risk-heading">Oppdragsarbeid</h2>
-    <p className="risk-description">I kulturlivet jobber mange frilans og som selvstendig næringsdrivende. Uten fast ansettelse kan det oppleves vanskelig å varsle i frykt for at konflikter kan ødelegge for fremtidige karrieremuligheter. Det kan skape en problematisk maktbalanse at frilansere er mer utskiftbare enn faste ansatte.</p>
-    <div className="risk-options">
-      <div className="risk-option-button">Ingen risiko</div>
-      <div className="risk-option-button">Lav risiko</div>
-      <div className="risk-option-button">Middels risiko</div>
-      <div className="risk-option-button">Høy risiko</div>
+const Risk = ({ title, description, measures }) => {
+  const [showMeasures, setShowMeasures] = useState(false)
+  const [currentChoice, setChoice] = useState(null)
+
+  const makeChoice = choice => {
+    const risky = choice !== 0
+    setShowMeasures(risky)
+    setChoice(choice)
+  }
+
+  const makeButton = (choice, text) => (
+    <div
+      className={`risk-option-button ${
+        currentChoice === choice ? "risk-option-active" : ""
+      }`}
+      {...buttonize(() => makeChoice(choice))}
+    >
+      {text}
     </div>
-  </section>
-)
+  )
+
+  return (
+    <section className="slide">
+      <h2 className="risk-heading">{title}</h2>
+      <p className="risk-description">{description}</p>
+      <div className="risk-options">
+        {makeButton(0, "Ingen risiko")}
+        {makeButton(1, "Lav risiko")}
+        {makeButton(2, "Middels risiko")}
+        {makeButton(3, "Høy risiko")}
+      </div>
+      {showMeasures && (
+        <div className="risk-measures">
+          <h3>Anbefalte tiltak</h3>
+          <p dangerouslySetInnerHTML={{ __html: measures.content }} />
+        </div>
+      )}
+      {currentChoice === 0 && <h3>Ingen anbefalte tiltak</h3>}
+    </section>
+  )
+}
+
+const Risks = ({ data }) => {
+  const { title, risks } = data
+  return (
+    <section className="risks">
+      <h2>{title}</h2>
+      {risks.map(risk => (
+        <Risk
+          key={risk.id}
+          title={risk.riskTitle}
+          description={risk.description}
+          measures={risk.measures}
+        />
+      ))}
+    </section>
+  )
+}
 
 export default Risks
