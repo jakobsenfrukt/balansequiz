@@ -6,14 +6,14 @@ const Timeline = ({ data }) => {
   const [currentTask, setCurrentTask] = useState(0)
   const [showFact, setShowFact] = useState(false)
   const [complete, setComplete] = useState(false)
-  const [feedback, setFeedback] = useState('')
+  const [feedback, setFeedback] = useState("")
 
   const { title, tasks } = data
   const possibleChoices = tasks.map(x => x.year)
 
   const task = tasks[currentTask]
   const hasFact = task.furtherInformation && task.furtherInformation.content
-  
+
   const makeChoice = choice => {
     const correct = choice === tasks[currentTask].year
     if (correct) {
@@ -26,9 +26,8 @@ const Timeline = ({ data }) => {
 
   const nextTask = () => {
     setShowFact(false)
-    setFeedback('')
+    setFeedback("")
     if (currentTask === tasks.length - 1) {
-      console.log("very nice 🥇")
       setComplete(true)
     } else {
       setCurrentTask(currentTask + 1)
