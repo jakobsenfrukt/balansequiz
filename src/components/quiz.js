@@ -16,7 +16,7 @@ const Quiz = ({ data }) => {
     if (correct) {
       setCorrectAnswers(correctAnswers + 1)
     }
-    nextTask()
+    setTimeout(nextTask, 400)
   }
 
   const nextTask = () => {
