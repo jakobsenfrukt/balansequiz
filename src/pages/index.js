@@ -24,11 +24,16 @@ const IndexPage = () => (
           Vi lagrer informasjonen anonymt. Vi spør fordi vi trenger det til
           rapporter til Kulturrådet blablabla.
         </p>
+        <br /><br /><br />
         <p>
           <br/>Utviklingverktøy:<br/>
-          <Link to="/chapters">Liste over kapitler</Link>
+          <h2><Link to="/chapters">Liste over kapitler</Link></h2>
         </p>
       </div>
+    </section>
+    <section className="slide">
+      <h1>Skisser</h1>
+      <p>Under følger skisser til de interaktive komponentene. Disse er ikke funksjonelle, så gå til <Link to="/chapters">Liste over kapitler</Link> om du vil teste :)</p>
     </section>
     <section className="slide">
       <h1>På linje</h1>
@@ -48,6 +53,9 @@ const IndexPage = () => (
         <div className="poll-option-button">7</div>
         <div className="poll-option-label">Enig</div>
       </div>
+    </section>
+    <section className="slide">
+      <h1>Quiz</h1>
     </section>
     <section className="slide">
       <h2 className="quiz-heading">Spørsmål 1/8</h2>

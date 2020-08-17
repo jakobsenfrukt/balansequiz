@@ -33,6 +33,12 @@ body {
   z-index: 20;
 }
 
+@media (min-width: 1000px) {
+  .site-header {
+    position: fixed;
+  }
+}
+
 .site-title {
   font-size: 1rem;
 }
@@ -132,6 +138,23 @@ ul li:before {
   position: absolute;
   top: -.15em;
   left: -1.5em;
+}
+
+.button {
+  background: #000;
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding: 1.2rem 2rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  border-radius: 2rem;
+  transition: all .2s ease;
+}
+
+.button:hover {
+  color: #fff;
+  transform: scale(1.05);
 }
 
 .slide.invert ul li:before {
@@ -257,68 +280,16 @@ h1 a {
 .information {
   opacity: .5;
   margin: 1rem 0 1rem auto;
+  padding: 0 1rem;
   font-size: 14px;
 }
 
 .slide__content h2 {
-  font-size: 10rem;
+  font-size: 3rem;
   display: block;
   font-weight: 900;
   line-height: 1;
   margin-bottom: 1rem;
-}
-
-.options {
-  display: flex;
-  width: 80%;
-  max-width: 500px;
-  justify-content: space-between;
-  margin: auto;
-}
-
-.option-button {
-  background: #76C2AF;
-  padding: 1rem 2rem;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: all .2s ease;
-}
-.option-button:hover {
-  transform: scale(1.1);
-}
-
-.timeline-wrapper {
-  width: calc(100% + 4rem);
-  height: 140px;
-  overflow: hidden;
-}
-
-.timeline-scroll {
-  width: 100%;
-  height: 160px;
-  overflow-x: scroll;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.timeline {
-  width: 3000px;
-  height: .3rem;
-  background: #0F4138;
-}
-
-.timeline .options {
-  transform: translateY(-50%);
-}
-
-.timeline-fact {
-  width: 80%;
-  max-width: 500px;
-  margin-bottom: 0;
-  align-self: flex-end;
-  text-align: left;
 }
 
 label {
@@ -346,6 +317,9 @@ input[type="text"]:focus, input[type="text"]:hover {
   box-shadow: 0 9px 0 -6px #000;
   transform: scale(1.025);
 }
+
+
+/* neste slide */
 
 .slide-nav {
   position: fixed;
@@ -386,6 +360,85 @@ input[type="text"]:focus, input[type="text"]:hover {
 .arrow-next-slide:hover {
   transform: scale(1.1);
 }
+
+
+
+
+/* tidslinje */
+.timeline-wrapper {
+  width: calc(100% + 4rem);
+  height: 140px;
+  overflow: hidden;
+}
+
+.timeline-scroll {
+  width: 100%;
+  height: 160px;
+  overflow-x: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline {
+  width: 3000px;
+  height: .3rem;
+  background: #76C2AF;
+}
+
+.timeline-statement {
+  font-size: 2.4rem;
+  font-weight: 900;
+  line-height: 1.2;
+  width: 80%;
+  max-width: 800px;
+}
+
+.timeline-fact {
+  width: 80%;
+  max-width: 32rem;
+  margin-bottom: 0;
+  align-self: flex-end;
+  text-align: left;
+}
+.timeline-fact p {
+  width: 100%;
+  max-width: none;
+}
+
+.timeline-options {
+  display: flex;
+  width: 80%;
+  max-width: 500px;
+  justify-content: space-between;
+  margin: auto;
+  transform: translateY(-50%);
+}
+
+.timeline-option-button {
+  background: #0F4138;
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding: 1.2rem 2rem;
+  margin: 0 .5rem;
+  cursor: pointer;
+  border-radius: 2rem;
+  transition: all .2s ease;
+}
+.timeline-option-button:hover {
+  transform: scale(1.1);
+}
+
+.timeline-feedback {
+  font-weight: 900;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
 
 
 /* på linje */
@@ -479,6 +532,7 @@ input[type="text"]:focus, input[type="text"]:hover {
   padding: 0;
   margin: 0 auto 2rem;
   counter-reset: quiz-option-counter;
+  list-style: none;
 }
 .quiz-option-button {
   background: #000;

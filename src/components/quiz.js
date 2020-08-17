@@ -46,6 +46,8 @@ const Quiz = ({ data }) => {
           Du fikk {correctAnswers} av {tasks.length} poeng
         </h2>
         <p>{feedback}</p>
+        <a href="/" className="button">Gå til starten av kurset</a>
+        <a href="/" className="button">Start quizen på nytt</a>
       </section>
     )
   }
