@@ -141,15 +141,21 @@ ul li:before {
 }
 
 .button {
+  display: block;
+  width: 80%;
+  max-width: 500px;
   background: #000;
   color: #fff;
   font-size: 1.2rem;
   text-decoration: none;
   padding: 1.2rem 2rem;
-  margin-bottom: 1rem;
+  margin: 1.5rem auto;
   cursor: pointer;
   border-radius: 2rem;
   transition: all .2s ease;
+}
+.button + .button {
+  margin-top: 0;
 }
 
 .button:hover {
@@ -365,31 +371,36 @@ input[type="text"]:focus, input[type="text"]:hover {
 
 
 /* tidslinje */
+.timeline-heading {
+  font-size: 2rem;
+}
 .timeline-wrapper {
   width: calc(100% + 4rem);
-  height: 140px;
+  height: 220px;
   overflow: hidden;
+  flex: none;
 }
 
 .timeline-scroll {
   width: 100%;
-  height: 160px;
+  height: 240px;
+  padding-bottom: 50px;
   overflow-x: scroll;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .timeline {
   width: 3000px;
   height: .3rem;
-  background: #76C2AF;
+  background: #0F4138;
 }
 
 .timeline-statement {
-  font-size: 2.4rem;
-  font-weight: 900;
+  font-size: 2.5rem;
+  font-weight: 400;
   line-height: 1.2;
   width: 80%;
   max-width: 800px;
@@ -397,7 +408,7 @@ input[type="text"]:focus, input[type="text"]:hover {
 
 .timeline-fact {
   width: 80%;
-  max-width: 32rem;
+  max-width: 38rem;
   margin-bottom: 0;
   align-self: flex-end;
   text-align: left;
@@ -417,8 +428,8 @@ input[type="text"]:focus, input[type="text"]:hover {
 }
 
 .timeline-option-button {
-  background: #0F4138;
-  color: #fff;
+  background: #76C2AF;
+  color: #000;
   font-size: 1.2rem;
   text-decoration: none;
   padding: 1.2rem 2rem;
@@ -438,6 +449,9 @@ input[type="text"]:focus, input[type="text"]:hover {
   letter-spacing: 1px;
 }
 
+.timeline-response {
+  background: pink;
+}
 
 
 
@@ -492,6 +506,13 @@ input[type="text"]:focus, input[type="text"]:hover {
   max-width: 34rem;
   margin: 1rem auto 5rem;
 }
+.risk-question {
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
 .risk-options {
   display: flex;
   width: 80%;
@@ -500,20 +521,22 @@ input[type="text"]:focus, input[type="text"]:hover {
   margin: 0 auto 2rem;
 }
 .risk-option-button {
-  background: #000;
-  color: #fff;
-  font-size: 1.5rem;
+  background: #76C2AF;
+  color: #000;
+  font-size: 1.2rem;
   padding: 1rem 2rem;
   margin: 0 .5rem 0;
   cursor: pointer;
   border-radius: 2rem;
-  transition: all .2s ease;
+  transition: all .4s ease-in-out, transform .2s ease;
 }
 .risk-option-button:hover {
   transform: scale(1.1);
 }
-
-
+.risk-option-button.risk-option-active {
+  background: #000 !important;
+  color: #fff !important;
+}
 
 /* quiz */
 .quiz-heading {
@@ -535,8 +558,8 @@ input[type="text"]:focus, input[type="text"]:hover {
   list-style: none;
 }
 .quiz-option-button {
-  background: #000;
-  color: #fff;
+  background: #76C2AF;
+  color: #000;
   font-size: 1.2rem;
   padding: 1.2rem 2rem 1.2rem 5rem;
   margin-bottom: 1rem;

@@ -26,6 +26,7 @@ const Timeline = ({ data }) => {
 
   const nextTask = () => {
     setShowFact(false)
+    setFeedback('')
     if (currentTask === tasks.length - 1) {
       console.log("very nice 🥇")
       setComplete(true)
@@ -40,16 +41,17 @@ const Timeline = ({ data }) => {
 
   return (
     <section className="slide">
-      <p>{title}</p>
+      <h2 className="timeline-heading">{title}</h2>
       <div className="timeline-statement">{task.toBePlaced}</div>
       <div className="timeline-wrapper">
         <div className="timeline-scroll">
           <div className="timeline">
             <div className="timeline-options">
-              {possibleChoices.map(choice => {
+              {possibleChoices.map((choice, index) => {
                 return (
                   <div
                     className="timeline-option-button"
+                    key={'choice' + index}
                     {...buttonize(() => makeChoice(choice))}
                   >
                     {choice}
@@ -61,18 +63,20 @@ const Timeline = ({ data }) => {
         </div>
       </div>
       <p className="information">Klikk eller scroll for å se hele &rarr;</p>
-      <p className="timeline-feedback">{feedback}</p>
-      {showFact && hasFact && (
-        <p
-          className="timeline-fact"
-          dangerouslySetInnerHTML={{ __html: task.furtherInformation.content }}
-        />
-      )}
-      {showFact && (
-        <div className="button" {...buttonize(nextTask)}>
-          Neste oppgave
-        </div>
-      )}
+      <div className="timeline-response">
+        <p className="timeline-feedback">{feedback}</p>
+        {showFact && hasFact && (
+          <p
+            className="timeline-fact"
+            dangerouslySetInnerHTML={{ __html: task.furtherInformation.content }}
+          />
+        )}
+        {showFact && (
+          <div className="button" {...buttonize(nextTask)}>
+            Neste oppgave &rarr;
+          </div>
+        )}
+      </div>
     </section>
   )
 }

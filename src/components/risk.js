@@ -11,11 +11,12 @@ const Risk = ({ title, description, measures }) => {
     setChoice(choice)
   }
 
-  const makeButton = (choice, text) => (
+  const makeButton = (choice, text, color) => (
     <div
       className={`risk-option-button ${
         currentChoice === choice ? "risk-option-active" : ""
       }`}
+      style={{ background: color }}
       {...buttonize(() => makeChoice(choice))}
     >
       {text}
@@ -23,14 +24,15 @@ const Risk = ({ title, description, measures }) => {
   )
 
   return (
-    <section className="slide">
+    <section className="slide slide--risk">
       <h2 className="risk-heading">{title}</h2>
       <p className="risk-description">{description}</p>
+      <h3 className="risk-question">Hvordan er risikoen der du jobber?</h3>
       <div className="risk-options">
-        {makeButton(0, "Ingen risiko")}
-        {makeButton(1, "Lav risiko")}
-        {makeButton(2, "Middels risiko")}
-        {makeButton(3, "Høy risiko")}
+        {makeButton(0, "Ingen risiko", "#91e2ce")}
+        {makeButton(1, "Lav risiko", "#ecdd88")}
+        {makeButton(2, "Middels risiko", "#f7bd9b")}
+        {makeButton(3, "Høy risiko", "#f78d8d")}
       </div>
       {showMeasures && (
         <div className="risk-measures">
@@ -38,16 +40,15 @@ const Risk = ({ title, description, measures }) => {
           <p dangerouslySetInnerHTML={{ __html: measures.content }} />
         </div>
       )}
-      {currentChoice === 0 && <h3>Ingen anbefalte tiltak</h3>}
+      {currentChoice === 0 && <h3>&hearts;</h3>}
     </section>
   )
 }
 
 const Risks = ({ data }) => {
-  const { title, risks } = data
+  const { risks } = data
   return (
-    <section className="risks">
-      <h2>{title}</h2>
+    <>
       {risks.map(risk => (
         <Risk
           key={risk.id}
@@ -56,7 +57,7 @@ const Risks = ({ data }) => {
           measures={risk.measures}
         />
       ))}
-    </section>
+    </>
   )
 }
 
