@@ -42,6 +42,7 @@ const Timeline = ({ data }) => {
     <section className="slide">
       <h2 className="timeline-heading">{title}</h2>
       <div className="timeline-statement">{task.toBePlaced}</div>
+      <p className="information">Klikk eller scroll for å se hele &rarr;</p>
       <div className="timeline-wrapper">
         <div className="timeline-scroll">
           <div className="timeline">
@@ -61,7 +62,6 @@ const Timeline = ({ data }) => {
           </div>
         </div>
       </div>
-      <p className="information">Klikk eller scroll for å se hele &rarr;</p>
       <div className="timeline-response">
         <p className="timeline-feedback">{feedback}</p>
         {showFact && hasFact && (
