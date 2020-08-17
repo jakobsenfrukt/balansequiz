@@ -28,8 +28,8 @@ export const ChapterTemplate = ({
           Del {convertToRoman(index)}: {title}
         </header>
       )}
-      {slides.map(slide => (
-        <Slide key={index} data={slide} index={index} />
+      {slides.map((slide, index) => (
+        <Slide key={'slide' + index} data={slide} index={index} />
       ))}
       {timeline && <Timeline data={timeline} />}
       {quiz && <Quiz data={quiz} />}
