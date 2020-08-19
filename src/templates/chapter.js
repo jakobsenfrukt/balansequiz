@@ -120,6 +120,16 @@ export const chapterQuery = graphql`
                 content
               }
             }
+            ... on Balanse_SlideTekstOgBilde {
+              text {
+                content
+              }
+              image {
+                id
+                url
+              }
+              imagePlacement
+            }
           }
         }
         timelines: children(type: [KursTidslinjeoppgave]) {

@@ -62,6 +62,25 @@ const Slide = ({ data, index }) => {
       </section>
     )
   }
+  if (type === "Balanse_SlideTekstOgBilde") {
+    const { text, image, imagePlacement } = data
+    const imageUrl = image && image.length !== 0 ? image[0].url : null
+    return (
+      <section className="slide">
+        <div
+          className={`slide__content slide__textandimage slide__textandimage__${imagePlacement}`}
+        >
+          <div
+            className="column"
+            dangerouslySetInnerHTML={{ __html: text.content }}
+          />
+          <div className="column">
+            {imageUrl && <img src={imageUrl} alt="" />}
+          </div>
+        </div>
+      </section>
+    )
+  }
   return (
     <p>
       Unhandled slide type <em>{type}</em>
