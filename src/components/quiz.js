@@ -35,11 +35,18 @@ const Quiz = ({ data }) => {
 
   const nextTask = () => {
     setShowCorrectAnswers(false)
+    setSelectedAnswer(null)
     if (currentTask === tasks.length - 1) {
       setComplete(true)
     } else {
       setCurrentTask(currentTask + 1)
     }
+  }
+
+  const reset = () => {
+    setCurrentTask(0)
+    setCorrectAnswers(0)
+    setComplete(false)
   }
 
   if (complete) {
@@ -64,7 +71,7 @@ const Quiz = ({ data }) => {
         <a href="/" className="button">
           Gå til starten av kurset
         </a>
-        <a href="/" className="button">
+        <a className="button" {...buttonize(() => reset())}>
           Start quizen på nytt
         </a>
       </section>
