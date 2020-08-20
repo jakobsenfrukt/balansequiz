@@ -5,21 +5,36 @@ import { buttonize } from "../utils"
 const Quiz = ({ data }) => {
   const [currentTask, setCurrentTask] = useState(0)
   const [correctAnswers, setCorrectAnswers] = useState(0)
+  const [selectedAnswer, setSelectedAnswer] = useState(null)
   const [complete, setComplete] = useState(false)
+  const [showCorrectAnswers, setShowCorrectAnswers] = useState(false)
 
   const { tasks } = data
 
   const task = tasks[currentTask]
 
+  const isCorrect = choice => choice === tasks[currentTask].rightAnswer
+
   const makeChoice = choice => {
-    const correct = choice === tasks[currentTask].rightAnswer
-    if (correct) {
+    if (isCorrect(choice)) {
       setCorrectAnswers(correctAnswers + 1)
     }
-    setTimeout(nextTask, 400)
+    setSelectedAnswer(choice)
+    setShowCorrectAnswers(true)
+    setTimeout(nextTask, 2500)
+  }
+
+  const buttonClasses = choice => {
+    if (!showCorrectAnswers) {
+      return ""
+    }
+    return `quiz-option-${isCorrect(choice) ? "correct" : "incorrect"} ${
+      selectedAnswer === choice ? "quiz-option-selected" : ""
+    }`
   }
 
   const nextTask = () => {
+    setShowCorrectAnswers(false)
     if (currentTask === tasks.length - 1) {
       setComplete(true)
     } else {
@@ -46,8 +61,12 @@ const Quiz = ({ data }) => {
           Du fikk {correctAnswers} av {tasks.length} poeng
         </h2>
         <p>{feedback}</p>
-        <a href="/" className="button">Gå til starten av kurset</a>
-        <a href="/" className="button">Start quizen på nytt</a>
+        <a href="/" className="button">
+          Gå til starten av kurset
+        </a>
+        <a href="/" className="button">
+          Start quizen på nytt
+        </a>
       </section>
     )
   }
@@ -60,19 +79,19 @@ const Quiz = ({ data }) => {
       <p className="quiz-question">{task.question}</p>
       <ol className="quiz-options">
         <li
-          className="quiz-option-button"
+          className={`quiz-option-button ${buttonClasses("A")}`}
           {...buttonize(() => makeChoice("A"))}
         >
           {task.answerA}
         </li>
         <li
-          className="quiz-option-button"
+          className={`quiz-option-button ${buttonClasses("B")}`}
           {...buttonize(() => makeChoice("B"))}
         >
           {task.answerB}
         </li>
         <li
-          className="quiz-option-button"
+          className={`quiz-option-button ${buttonClasses("C")}`}
           {...buttonize(() => makeChoice("C"))}
         >
           {task.answerC}
