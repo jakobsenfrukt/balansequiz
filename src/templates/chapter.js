@@ -9,6 +9,7 @@ import Slide from "../components/slide"
 import Timeline from "../components/timeline"
 import Quiz from "../components/quiz"
 import Risks from "../components/risk"
+import PaLinje from "../components/palinje"
 
 const nextSlide = () => window.scrollBy(0, window.innerHeight)
 
@@ -20,6 +21,7 @@ export const ChapterTemplate = ({
   timeline,
   quiz,
   risks,
+  paLinje,
 }) => {
   return (
     <>
@@ -29,11 +31,12 @@ export const ChapterTemplate = ({
         </header>
       )}
       {slides.map((slide, index) => (
-        <Slide key={'slide' + index} data={slide} index={index} />
+        <Slide key={"slide" + index} data={slide} index={index} />
       ))}
       {timeline && <Timeline data={timeline} />}
       {quiz && <Quiz data={quiz} />}
       {risks && <Risks data={risks} />}
+      {paLinje && <PaLinje data={paLinje} />}
       <nav className="slide-nav">
         <span className="arrow-text left">Klikk for å</span>
         <div className="arrow-next-slide" {...buttonize(nextSlide)}>
@@ -54,12 +57,21 @@ ChapterTemplate.propTypes = {
 const ChapterPage = ({ data, pageContext }) => {
   const { index } = pageContext
   const { chapter } = data.balanse
-  const { title, slug, slides, timelines, quizzes, riskFactors } = chapter
+  const {
+    title,
+    slug,
+    slides,
+    timelines,
+    quizzes,
+    riskFactors,
+    paLinjes,
+  } = chapter
 
   // Limit to one timeline, quiz and risk factor section per chapter for now
   const timeline = timelines.length !== 0 ? timelines[0] : null
   const quiz = quizzes.length !== 0 ? quizzes[0] : null
   const risks = riskFactors.length !== 0 ? riskFactors[0] : null
+  const paLinje = paLinjes.length !== 0 ? paLinjes[0] : null
 
   return (
     <Layout>
@@ -71,6 +83,7 @@ const ChapterPage = ({ data, pageContext }) => {
         timeline={timeline}
         quiz={quiz}
         risks={risks}
+        paLinje={paLinje}
       />
     </Layout>
   )
@@ -180,6 +193,19 @@ export const chapterQuery = graphql`
                 measures {
                   content
                 }
+              }
+            }
+          }
+        }
+        paLinjes: children(type: [KursPaLinje]) {
+          __typename
+          id
+          ... on Balanse_KursPaLinje {
+            title
+            assertions: paLinje {
+              __typename
+              ... on Balanse_PaLinjeAssertion {
+                text
               }
             }
           }
