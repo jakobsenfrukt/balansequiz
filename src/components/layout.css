@@ -574,14 +574,14 @@ input[type="text"]:focus, input[type="text"]:hover {
   list-style: none;
 }
 .quiz-option-button {
-  background: #76C2AF;
+  background: #f5efd6;
   color: #000;
   font-size: 1.2rem;
   padding: 1.2rem 2rem 1.2rem 5rem;
   margin-bottom: 1rem;
   cursor: pointer;
   border-radius: 2rem;
-  transition: all .2s ease;
+  transition: all .5s ease, transform .2s ease;
   counter-increment: quiz-option-counter;
   position: relative;
 }
@@ -600,9 +600,21 @@ input[type="text"]:focus, input[type="text"]:hover {
   top: .55rem;
   left: .55rem;
 }
-.quiz-option-button:hover {
+.quiz-option-button:hover,
+.quiz-option-selected {
   transform: scale(1.05);
 }
+
+.quiz-option-correct {
+  background: #76C2AF;
+}
+
+.quiz-option-selected.quiz-option-incorrect {
+  background: #e73636;
+  color: #fff;
+}
+
+
 
 .site-footer {
   position: absolute;
