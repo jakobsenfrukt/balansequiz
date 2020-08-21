@@ -21,7 +21,7 @@ const Quiz = ({ data }) => {
     }
     setSelectedAnswer(choice)
     setShowCorrectAnswers(true)
-    setTimeout(nextTask, 2500)
+    setTimeout(nextTask, 2000)
   }
 
   const buttonClasses = choice => {
