@@ -606,6 +606,17 @@ input[type="text"]:focus, input[type="text"]:hover {
 }
 
 .quiz-option-correct {
+  animation: .5s ease .5s forwards showCorrectAnswer;
+}
+
+@keyframes showCorrectAnswer {
+  to {
+    background: #76C2AF;
+  }
+}
+
+.quiz-option-selected.quiz-option-correct {
+  animation: none;
   background: #76C2AF;
 }
 
