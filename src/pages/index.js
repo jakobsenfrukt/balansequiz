@@ -44,13 +44,15 @@ const IndexPage = () => (
       <p className="statement">Seksuell trakassering er mer utbredt i kulturlivet enn i andre sektorer</p>
       <div className="poll-options">
         <div className="poll-option-label">Uenig</div>
-        <div className="poll-option-button">1</div>
-        <div className="poll-option-button">2</div>
-        <div className="poll-option-button">3</div>
-        <div className="poll-option-button">4</div>
-        <div className="poll-option-button">5</div>
-        <div className="poll-option-button">6</div>
-        <div className="poll-option-button">7</div>
+        <div className="poll-option-buttons">
+          <div className="poll-option-button">1</div>
+          <div className="poll-option-button">2</div>
+          <div className="poll-option-button">3</div>
+          <div className="poll-option-button">4</div>
+          <div className="poll-option-button">5</div>
+          <div className="poll-option-button">6</div>
+          <div className="poll-option-button">7</div>
+        </div>
         <div className="poll-option-label">Enig</div>
       </div>
     </section>

@@ -22,15 +22,17 @@ const PaLinje = ({ data }) => {
         <p className="statement">{assertion.text}</p>
         <div className="poll-options">
           <div className="poll-option-label">Uenig</div>
-
-          {options.map(option => (
-            <div
-              className="poll-option-button"
-              {...buttonize(() => makeChoice(option))}
-            >
-              {option}
-            </div>
-          ))}
+          <div className="poll-option-buttons">
+            <div className="poll-option-buttons__line"></div>
+            {options.map(option => (
+              <div
+                className="poll-option-button"
+                {...buttonize(() => makeChoice(option))}
+              >
+                {option}
+              </div>
+            ))}
+          </div>
           <div className="poll-option-label">Enig</div>
         </div>
       </section>
