@@ -296,6 +296,19 @@ h1 a {
   order: 2;
 }
 
+.big-number {
+  font-size: 8rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+
+
+
+
+
+
+
 .chapter-header {
   position: fixed;
   top: 0;
