@@ -71,10 +71,10 @@ const Slide = ({ data, index }) => {
           className={`slide__content slide__textandimage slide__textandimage__${imagePlacement}`}
         >
           <div
-            className="column"
+            className="column column--text"
             dangerouslySetInnerHTML={{ __html: text.content }}
           />
-          <div className="column">
+          <div className="column column--image">
             {imageUrl && <img src={imageUrl} alt="" />}
           </div>
         </div>

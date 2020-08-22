@@ -259,6 +259,43 @@ h1 a {
   }
 }
 
+.slide__textandimage {
+  display: flex;
+}
+
+.slide__textandimage__left,
+.slide__textandimage__right {
+  text-align: left;
+}
+
+.slide__textandimage__above,
+.slide__textandimage__below {
+  flex-direction: column;
+}
+
+.slide__textandimage__above p,
+.slide__textandimage__below p {
+  text-align: center;
+}
+
+.slide__textandimage__above .column,
+.slide__textandimage__below .column {
+  width: 100%;
+  padding: 2rem 2rem;
+  display: block;
+  height: auto;
+}
+
+.slide__textandimage__above .column--image,
+.slide__textandimage__left .column--image {
+  order: 1;
+}
+
+.slide__textandimage__above .column--text,
+.slide__textandimage__left .column--text {
+  order: 2;
+}
+
 .chapter-header {
   position: fixed;
   top: 0;
