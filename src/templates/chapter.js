@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { graphql, Link } from "gatsby"
 // import Img from "gatsby-image"
@@ -11,7 +11,29 @@ import Quiz from "../components/quiz"
 import Risks from "../components/risk"
 import PaLinje from "../components/palinje"
 
-const nextSlide = () => window.scrollBy(0, window.innerHeight)
+export const NavigationWrapper = ({ children }) => {
+  const [hasClickedArrow, setHasClickedArrow] = useState(false)
+  const nextSlide = () => {
+    setHasClickedArrow(true)
+    window.scrollBy(0, window.innerHeight)
+  }
+  return (
+    <>
+      {children}
+      <nav className="slide-nav">
+        {!hasClickedArrow && (
+          <span className="arrow-text left">Klikk for å</span>
+        )}
+        <div className="arrow-next-slide" {...buttonize(nextSlide)}>
+          &darr;
+        </div>
+        {!hasClickedArrow && (
+          <span className="arrow-text right">gå til neste</span>
+        )}
+      </nav>
+    </>
+  )
+}
 
 export const ChapterTemplate = ({
   title,
@@ -39,13 +61,6 @@ export const ChapterTemplate = ({
       {quiz && <Quiz data={quiz} />}
       {risks && <Risks data={risks} />}
       {paLinje && <PaLinje data={paLinje} />}
-      <nav className="slide-nav">
-        <span className="arrow-text left">Klikk for å</span>
-        <div className="arrow-next-slide" {...buttonize(nextSlide)}>
-          &darr;
-        </div>
-        <span className="arrow-text right">gå til neste</span>
-      </nav>
     </>
   )
 }

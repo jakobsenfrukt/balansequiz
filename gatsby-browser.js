@@ -4,4 +4,12 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-// You can delete this file if you're not using it
+import React from "react"
+import { NavigationWrapper } from "./src/templates/chapter.js"
+
+export const wrapPageElement = ({ element, props }) => {
+  if (!props.pageContext.showNavigation) {
+      return element
+  }
+  return <NavigationWrapper {...props}>{element}</NavigationWrapper>
+}

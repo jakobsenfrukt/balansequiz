@@ -36,6 +36,7 @@ exports.createPages = ({ actions, graphql }) => {
         path: chapter.slug,
         component: chapterTemplate,
         context: {
+          showNavigation: true,
           id: chapter.id,
           index: index,
         },
