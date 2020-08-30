@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 // import Img from "gatsby-image"
 // import Meta from "../components/Meta"
 import { buttonize, convertToRoman } from "../utils"
@@ -27,7 +27,9 @@ export const ChapterTemplate = ({
     <>
       {index !== 0 && (
         <header className="chapter-header">
-          Del {convertToRoman(index)}: {title}
+          <Link to="/chapters">
+            Del {convertToRoman(index)}: {title}
+          </Link>
         </header>
       )}
       {slides.map((slide, index) => (

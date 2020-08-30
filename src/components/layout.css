@@ -336,6 +336,10 @@ h1 a {
   text-align: right;
 }
 
+.chapter-header a {
+  text-decoration: none;
+}
+
 @media (max-width: 900px) {
   .chapter-header {
     text-align: center;
