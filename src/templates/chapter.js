@@ -108,6 +108,9 @@ export const chapterQuery = graphql`
           slides: slide {
             __typename
             ... on Balanse_SlideKapittelforside {
+              backgroundColor {
+                hex
+              }
               chapterTitle
               images {
                 id
@@ -115,11 +118,17 @@ export const chapterQuery = graphql`
               }
             }
             ... on Balanse_SlideEnKolonne {
+              backgroundColor {
+                hex
+              }
               text {
                 content
               }
             }
             ... on Balanse_SlideToKolonner {
+              backgroundColor {
+                hex
+              }
               left {
                 content
               }
@@ -128,12 +137,18 @@ export const chapterQuery = graphql`
               }
             }
             ... on Balanse_SlideSitat {
+              backgroundColor {
+                hex
+              }
               quote
               quoteDescription {
                 content
               }
             }
             ... on Balanse_SlideTekstOgBilde {
+              backgroundColor {
+                hex
+              }
               text {
                 content
               }

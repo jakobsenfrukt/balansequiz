@@ -4,12 +4,15 @@ import React from "react"
 import { convertToRoman } from "../utils"
 
 const Slide = ({ data, index }) => {
-  const { __typename: type } = data
+  const { __typename: type, backgroundColor } = data
+  const backgroundColorHex =
+    backgroundColor !== null ? backgroundColor.hex : null
+  const slideAttrs = { "data-background-color": backgroundColorHex }
   if (type === "Balanse_SlideKapittelforside") {
     const { images, chapterTitle: title } = data
     const imageUrl = images && images.length !== 0 ? images[0].url : null
     return (
-      <section className="slide slide--chapter-front">
+      <section className="slide slide--chapter-front" {...slideAttrs}>
         <div className="slide__content">
           {index !== 0 && (
             <span className="chapter-no">Del {convertToRoman(index)}</span>
@@ -23,7 +26,7 @@ const Slide = ({ data, index }) => {
   if (type === "Balanse_SlideEnKolonne") {
     const { text } = data
     return (
-      <section className="slide">
+      <section className="slide" {...slideAttrs}>
         <div
           className="slide__content single-column"
           dangerouslySetInnerHTML={{ __html: text.content }}
@@ -34,7 +37,7 @@ const Slide = ({ data, index }) => {
   if (type === "Balanse_SlideToKolonner") {
     const { left, right } = data
     return (
-      <section className="slide">
+      <section className="slide" {...slideAttrs}>
         <div className="slide__content split">
           <div
             className="column left"
@@ -51,7 +54,7 @@ const Slide = ({ data, index }) => {
   if (type === "Balanse_SlideSitat") {
     const { quote, quoteDescription } = data
     return (
-      <section className="slide">
+      <section className="slide" {...slideAttrs}>
         <div className="slide__content">
           <blockquote>{quote}</blockquote>
           <div
@@ -66,7 +69,7 @@ const Slide = ({ data, index }) => {
     const { text, image, imagePlacement } = data
     const imageUrl = image && image.length !== 0 ? image[0].url : null
     return (
-      <section className="slide">
+      <section className="slide" {...slideAttrs}>
         <div
           className={`slide__content slide__textandimage slide__textandimage__${imagePlacement}`}
         >
