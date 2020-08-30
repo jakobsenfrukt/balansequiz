@@ -371,6 +371,20 @@ h1 a {
   margin-bottom: 1rem;
 }
 
+.slide__content figure {
+  margin: 2rem auto;
+  padding: 56.25% 0 0;
+  position: relative;
+}
+
+.slide__content figure iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
 label {
   font-size: 1.5rem;
   font-weight: 700;
