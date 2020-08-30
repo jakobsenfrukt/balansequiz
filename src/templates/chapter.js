@@ -110,9 +110,6 @@ export const chapterQuery = graphql`
           slides: slide {
             __typename
             ... on Balanse_SlideKapittelforside {
-              backgroundColor {
-                hex
-              }
               chapterTitle
               images {
                 id

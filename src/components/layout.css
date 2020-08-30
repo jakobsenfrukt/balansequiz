@@ -209,6 +209,10 @@ h1 a {
   position: relative;
 }
 
+.slide.invert {
+  color: #fff;
+}
+
 .slide__content {
   padding: 5rem 2rem;
   width: 100%;

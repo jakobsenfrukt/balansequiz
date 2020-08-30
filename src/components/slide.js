@@ -6,7 +6,7 @@ import { convertToRoman } from "../utils"
 const Slide = ({ data, index }) => {
   const { __typename: type, backgroundColor } = data
   const backgroundColorHex =
-    backgroundColor !== null ? backgroundColor.hex : "inherit"
+    backgroundColor ? backgroundColor.hex : "inherit"
   const slideStyle = { backgroundColor: backgroundColorHex }
   const darkColors = ["#e269a3", "#0f4138"]
   const bgIsDark = darkColors.includes(backgroundColorHex.toLowerCase())
