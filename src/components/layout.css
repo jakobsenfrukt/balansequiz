@@ -209,10 +209,6 @@ h1 a {
   position: relative;
 }
 
-.slide[data-background-color] {
-  background-color: attr(data-background-color);
-}
-
 .slide:nth-of-type(even) {
   background: #E269A3;
   color: #fff;
