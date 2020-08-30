@@ -6,7 +6,6 @@ const Timeline = ({ data }) => {
   const [currentTask, setCurrentTask] = useState(0)
   const [showFact, setShowFact] = useState(false)
   const [complete, setComplete] = useState(false)
-  const [feedback, setFeedback] = useState("")
 
   const { title, tasks } = data
   const possibleChoices = tasks.map(x => x.year)
@@ -17,16 +16,12 @@ const Timeline = ({ data }) => {
   const makeChoice = choice => {
     const correct = choice === tasks[currentTask].year
     if (correct) {
-      setFeedback("Riktig!")
       setShowFact(true)
-    } else {
-      setFeedback("Niks!")
     }
   }
 
   const nextTask = () => {
     setShowFact(false)
-    setFeedback("")
     if (currentTask === tasks.length - 1) {
       setComplete(true)
     } else {
@@ -62,20 +57,20 @@ const Timeline = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className="timeline-response">
-        <p className="timeline-feedback">{feedback}</p>
-        {showFact && hasFact && (
-          <p
-            className="timeline-fact"
-            dangerouslySetInnerHTML={{ __html: task.furtherInformation.content }}
-          />
-        )}
-        {showFact && (
+      {showFact && (
+        <div className="timeline-feedback">
+          <p className="timeline-feedback__message">Riktig!</p>
+          {hasFact && (
+            <p
+              className="timeline-fact"
+              dangerouslySetInnerHTML={{ __html: task.furtherInformation.content }}
+            />
+          )}
           <div className="button" {...buttonize(nextTask)}>
             Neste oppgave &rarr;
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </section>
   )
 }
