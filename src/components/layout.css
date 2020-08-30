@@ -209,21 +209,6 @@ h1 a {
   position: relative;
 }
 
-.slide:nth-of-type(even) {
-  background: #E269A3;
-  color: #fff;
-}
-.slide.pink {
-  background: #E269A3;
-}
-.slide.green {
-  background: #76C2AF;
-  color: #000;
-}
-.slide.darkgreen {
-  background: #0F4138;
-}
-
 .slide__content {
   padding: 5rem 2rem;
   width: 100%;
