@@ -7,12 +7,19 @@ const Slide = ({ data, index }) => {
   const { __typename: type, backgroundColor } = data
   const backgroundColorHex =
     backgroundColor !== null ? backgroundColor.hex : "inherit"
-  const slideStyle = { "backgroundColor": backgroundColorHex }
+  const slideStyle = { backgroundColor: backgroundColorHex }
+  const darkColors = ["#e269a3", "#0f4138"]
+  const bgIsDark = darkColors.includes(backgroundColorHex.toLowerCase())
+  const extraClasses = bgIsDark ? "invert" : ""
+
   if (type === "Balanse_SlideKapittelforside") {
     const { images, chapterTitle: title } = data
     const imageUrl = images && images.length !== 0 ? images[0].url : null
     return (
-      <section className="slide slide--chapter-front" style={slideStyle}>
+      <section
+        className={`slide ${extraClasses} slide--chapter-front`}
+        style={slideStyle}
+      >
         <div className="slide__content">
           {index !== 0 && (
             <span className="chapter-no">Del {convertToRoman(index)}</span>
@@ -23,10 +30,11 @@ const Slide = ({ data, index }) => {
       </section>
     )
   }
+
   if (type === "Balanse_SlideEnKolonne") {
     const { text } = data
     return (
-      <section className="slide" style={slideStyle}>
+      <section className={`slide ${extraClasses}`} style={slideStyle}>
         <div
           className="slide__content single-column"
           dangerouslySetInnerHTML={{ __html: text.content }}
@@ -34,10 +42,11 @@ const Slide = ({ data, index }) => {
       </section>
     )
   }
+
   if (type === "Balanse_SlideToKolonner") {
     const { left, right } = data
     return (
-      <section className="slide" style={slideStyle}>
+      <section className={`slide ${extraClasses}`} style={slideStyle}>
         <div className="slide__content split">
           <div
             className="column left"
@@ -51,10 +60,11 @@ const Slide = ({ data, index }) => {
       </section>
     )
   }
+
   if (type === "Balanse_SlideSitat") {
     const { quote, quoteDescription } = data
     return (
-      <section className="slide" style={slideStyle}>
+      <section className={`slide ${extraClasses}`} style={slideStyle}>
         <div className="slide__content">
           <blockquote>{quote}</blockquote>
           <div
@@ -65,11 +75,12 @@ const Slide = ({ data, index }) => {
       </section>
     )
   }
+
   if (type === "Balanse_SlideTekstOgBilde") {
     const { text, image, imagePlacement } = data
     const imageUrl = image && image.length !== 0 ? image[0].url : null
     return (
-      <section className="slide" style={slideStyle}>
+      <section className={`slide ${extraClasses}`} style={slideStyle}>
         <div
           className={`slide__content slide__textandimage slide__textandimage__${imagePlacement}`}
         >
