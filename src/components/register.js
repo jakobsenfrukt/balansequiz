@@ -11,8 +11,8 @@ const Register = ({ data, onSend }) => {
   return (
     <section className="slide green">
       <div className="slide__content slide__register">
-        {inputs.map(input => (
-          <>
+        {inputs.map((input, index) => (
+          <div key={index}>
             <label htmlFor="org">
               {input.question}
               <input
@@ -24,7 +24,7 @@ const Register = ({ data, onSend }) => {
               ></input>
             </label>
             <p>{input.description}</p>
-          </>
+          </div>
         ))}
         <div className="button" role="button" {...buttonize(() => sendForm())}>
           Send inn og start kurset
