@@ -6,6 +6,7 @@ const Timeline = ({ data }) => {
   const [currentTask, setCurrentTask] = useState(0)
   const [showFact, setShowFact] = useState(false)
   const [complete, setComplete] = useState(false)
+  const [usedChoices, setUsedChoices] = useState([])
 
   const { title, tasks } = data
   const possibleChoices = tasks.map(x => x.year)
@@ -16,6 +17,7 @@ const Timeline = ({ data }) => {
   const makeChoice = choice => {
     const correct = choice === tasks[currentTask].year
     if (correct) {
+      setUsedChoices(usedChoices.concat([choice]))
       setShowFact(true)
     }
   }
@@ -43,10 +45,13 @@ const Timeline = ({ data }) => {
           <div className="timeline">
             <div className="timeline-options">
               {possibleChoices.map((choice, index) => {
+                const used = usedChoices.includes(choice)
                 return (
                   <div
-                    className="timeline-option-button"
-                    key={'choice' + index}
+                    className={`timeline-option-button ${
+                      used ? "timeline-option-used" : ""
+                    }`}
+                    key={"choice" + index}
                     {...buttonize(() => makeChoice(choice))}
                   >
                     {choice}
@@ -63,7 +68,9 @@ const Timeline = ({ data }) => {
           {hasFact && (
             <p
               className="timeline-fact"
-              dangerouslySetInnerHTML={{ __html: task.furtherInformation.content }}
+              dangerouslySetInnerHTML={{
+                __html: task.furtherInformation.content,
+              }}
             />
           )}
           <div className="button" {...buttonize(nextTask)}>
