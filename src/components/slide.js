@@ -5,8 +5,7 @@ import { convertToRoman } from "../utils"
 
 const Slide = ({ data, index }) => {
   const { __typename: type, backgroundColor } = data
-  const backgroundColorHex =
-    backgroundColor ? backgroundColor.hex : "inherit"
+  const backgroundColorHex = backgroundColor ? backgroundColor.hex : "inherit"
   const slideStyle = { backgroundColor: backgroundColorHex }
   const darkColors = ["#e269a3", "#0f4138"]
   const bgIsDark = darkColors.includes(backgroundColorHex.toLowerCase())
@@ -32,19 +31,25 @@ const Slide = ({ data, index }) => {
   }
 
   if (type === "Balanse_SlideEnKolonne") {
-    const { text } = data
+    const { text, citations } = data
     return (
       <section className={`slide ${extraClasses}`} style={slideStyle}>
         <div
           className="slide__content single-column"
           dangerouslySetInnerHTML={{ __html: text.content }}
         />
+        {citations && (
+          <div
+            className="slide__content citations"
+            dangerouslySetInnerHTML={{ __html: citations.content }}
+          />
+        )}
       </section>
     )
   }
 
   if (type === "Balanse_SlideToKolonner") {
-    const { left, right } = data
+    const { left, right, citations } = data
     return (
       <section className={`slide ${extraClasses}`} style={slideStyle}>
         <div className="slide__content split">
@@ -57,12 +62,18 @@ const Slide = ({ data, index }) => {
             dangerouslySetInnerHTML={{ __html: right.content }}
           />
         </div>
+        {citations && (
+          <div
+            className="slide__content citations"
+            dangerouslySetInnerHTML={{ __html: citations.content }}
+          />
+        )}
       </section>
     )
   }
 
   if (type === "Balanse_SlideSitat") {
-    const { quote, quoteDescription } = data
+    const { quote, quoteDescription, citations } = data
     return (
       <section className={`slide ${extraClasses}`} style={slideStyle}>
         <div className="slide__content">
@@ -72,12 +83,18 @@ const Slide = ({ data, index }) => {
             dangerouslySetInnerHTML={{ __html: quoteDescription.content }}
           />
         </div>
+        {citations && (
+          <div
+            className="slide__content citations"
+            dangerouslySetInnerHTML={{ __html: citations.content }}
+          />
+        )}
       </section>
     )
   }
 
   if (type === "Balanse_SlideTekstOgBilde") {
-    const { text, image, imagePlacement } = data
+    const { text, image, imagePlacement, citations } = data
     const imageUrl = image && image.length !== 0 ? image[0].url : null
     return (
       <section className={`slide ${extraClasses}`} style={slideStyle}>
@@ -92,6 +109,12 @@ const Slide = ({ data, index }) => {
             {imageUrl && <img src={imageUrl} alt="" />}
           </div>
         </div>
+        {citations && (
+          <div
+            className="slide__content citations"
+            dangerouslySetInnerHTML={{ __html: citations.content }}
+          />
+        )}
       </section>
     )
   }

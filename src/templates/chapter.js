@@ -208,6 +208,9 @@ export const chapterQuery = graphql`
               text {
                 content
               }
+              citations {
+                content
+              }
             }
             ... on Balanse_SlideToKolonner {
               backgroundColor {
@@ -219,6 +222,9 @@ export const chapterQuery = graphql`
               right {
                 content
               }
+              citations {
+                content
+              }
             }
             ... on Balanse_SlideSitat {
               backgroundColor {
@@ -226,6 +232,9 @@ export const chapterQuery = graphql`
               }
               quote
               quoteDescription {
+                content
+              }
+              citations {
                 content
               }
             }
@@ -241,6 +250,9 @@ export const chapterQuery = graphql`
                 url
               }
               imagePlacement
+              citations {
+                content
+              }
             }
           }
         }
