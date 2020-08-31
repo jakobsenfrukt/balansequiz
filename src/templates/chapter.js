@@ -63,7 +63,7 @@ export const NavigationWrapper = ({ children, pageContext, navigate }) => {
     if (!slide) {
       return
     }
-    slide.scrollIntoView(true, { behaviour: "smooth" })
+    slide.scrollIntoView({ behavior: "smooth" })
   }
 
   const moreChapters =
