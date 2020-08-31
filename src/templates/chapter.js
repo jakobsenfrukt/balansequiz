@@ -9,6 +9,7 @@ import Timeline from "../components/timeline"
 import Quiz from "../components/quiz"
 import Risks from "../components/risk"
 import PaLinje from "../components/palinje"
+import Register from "../components/register"
 
 export const NavigationWrapper = ({ children, pageContext, navigate }) => {
   const [hasClickedArrow, setHasClickedArrow] = useState(false)
@@ -65,7 +66,8 @@ export const NavigationWrapper = ({ children, pageContext, navigate }) => {
     slide.scrollIntoView(true, { behaviour: "smooth" })
   }
 
-  const moreChapters = pageContext.nextChapterPath !== null
+  const moreChapters =
+    pageContext.nextChapterPath !== null && pageContext.showNextChapterButton
   if (!moreSlides && !moreChapters) {
     return children
   }
@@ -98,6 +100,8 @@ export const ChapterTemplate = ({
   quiz,
   risks,
   paLinje,
+  registerForm,
+  registerFormOnSend,
 }) => {
   return (
     <>
@@ -115,6 +119,9 @@ export const ChapterTemplate = ({
       {quiz && <Quiz data={quiz} />}
       {risks && <Risks data={risks} />}
       {paLinje && <PaLinje data={paLinje} />}
+      {registerForm && (
+        <Register data={registerForm} onSend={registerFormOnSend} />
+      )}
     </>
   )
 }
@@ -125,7 +132,7 @@ ChapterTemplate.propTypes = {
   index: PropTypes.number.isRequired,
 }
 
-const ChapterPage = ({ data, pageContext }) => {
+const ChapterPage = ({ data, pageContext, navigate }) => {
   const { index } = pageContext
   const { chapter } = data.balanse
   const {
@@ -136,13 +143,19 @@ const ChapterPage = ({ data, pageContext }) => {
     quizzes,
     riskFactors,
     paLinjes,
+    registerForms,
   } = chapter
 
-  // Limit to one timeline, quiz and risk factor section per chapter for now
+  const registerFormOnSend = () => {
+    navigate(`/${pageContext.nextChapterPath}`)
+  }
+
+  // Limit to one fancy section per chapter for now
   const timeline = timelines.length !== 0 ? timelines[0] : null
   const quiz = quizzes.length !== 0 ? quizzes[0] : null
   const risks = riskFactors.length !== 0 ? riskFactors[0] : null
   const paLinje = paLinjes.length !== 0 ? paLinjes[0] : null
+  const registerForm = registerForms.length !== 0 ? registerForms[0] : null
 
   return (
     <Layout>
@@ -156,6 +169,8 @@ const ChapterPage = ({ data, pageContext }) => {
         quiz={quiz}
         risks={risks}
         paLinje={paLinje}
+        registerForm={registerForm}
+        registerFormOnSend={registerFormOnSend}
       />
     </Layout>
   )
@@ -290,6 +305,21 @@ export const chapterQuery = graphql`
               __typename
               ... on Balanse_PaLinjeAssertion {
                 text
+              }
+            }
+          }
+        }
+        registerForms: children(type: [KursRegister]) {
+          __typename
+          id
+          ... on Balanse_KursRegister {
+            title
+            inputs: registerForm {
+              __typename
+              ... on Balanse_RegisterFormTextInput {
+                question
+                placeholder
+                description
               }
             }
           }

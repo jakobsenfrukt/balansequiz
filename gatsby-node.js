@@ -31,16 +31,24 @@ exports.createPages = ({ actions, graphql }) => {
         : allChapters
 
     chapters.forEach((chapter, index) => {
-      console.log("creating page", chapter.slug)
       const nextChapterPath =
         index < chapters.length - 1 ? chapters[index + 1].slug : null
+      let path = chapter.slug
+      let showNextChapterButton = false
+      if (chapter.slug === "intro") {
+        path = "/"
+        showNextChapterButton = true
+      }
+      console.log("creating page", path, 'from slug', chapter.slug)
+
       createPage({
-        path: chapter.slug,
+        path: path,
         component: chapterTemplate,
         context: {
           id: chapter.id,
           index: index,
           showNavigation: true,
+          showNextChapterButton: showNextChapterButton,
           nextChapterPath: nextChapterPath,
         },
       })

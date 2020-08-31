@@ -13,11 +13,17 @@ const TableOfContents = ({ data }) => {
           <h1>Kapitler</h1>
           <p>:)</p>
           <ul>
-            {chapters.map(chapter => (
-              <li key={chapter.id}>
-                <Link to={`/${chapter.slug}`}>{chapter.title}</Link>
-              </li>
-            ))}
+            {chapters.map(chapter => {
+              let path = `/${chapter.slug}`
+              if (chapter.slug === "intro") {
+                path = "/"
+              }
+              return (
+                <li key={chapter.id}>
+                  <Link to={path}>{chapter.title}</Link>
+                </li>
+              )
+            })}
           </ul>
         </div>
       </section>
