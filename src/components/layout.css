@@ -302,9 +302,11 @@ h1 a {
 }
 
 .big-number {
-  font-size: 8rem;
+  font-size: 13vw;
   font-weight: 900;
   line-height: 1;
+  max-width: 1200px;
+  margin-top: -1rem;
 }
 
 
@@ -373,6 +375,27 @@ h1 a {
   height: 100% !important;
 }
 
+.slide__citations {
+  opacity: .5;
+  text-align: right;
+  width: 100%;
+  padding: 2rem;
+}
+.slide__citations p {
+  font-size: 14px;
+  margin-right: 0;
+  max-width: 20rem;
+}
+
+
+
+
+
+
+
+
+
+
 label {
   font-size: 1.5rem;
   font-weight: 700;
@@ -415,10 +438,12 @@ input[type="text"]:focus, input[type="text"]:hover {
 .arrow-text {
   opacity: .5;
   font-size: 14px;
+  width: 10em;
 }
 
 .arrow-text.left {
   margin: 0 .6rem 0 auto;
+  text-align: right;
 }
 
 .arrow-text.right {
@@ -581,6 +606,7 @@ input[type="text"]:focus, input[type="text"]:hover {
 .poll-option-label {
   line-height: 3rem;
   margin: 0 1rem;
+  width: 3.6rem;
 }
 .poll-option-buttons {
   display: flex;
@@ -615,6 +641,26 @@ input[type="text"]:focus, input[type="text"]:hover {
 }
 .poll-option-button:hover {
   transform: scale(1.1);
+}
+.poll-distribution {
+  z-index: 1;
+  display: flex;
+  width: 24.4rem;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+.poll-line {
+  width: .3rem;
+  display: inline-block;
+  background: black;
+  transition: height 1s ease-in;
+  animation: grow 1s forwards;
+}
+@keyframes grow {
+  from {
+    height: 0;
+  }
 }
 
 
@@ -661,6 +707,21 @@ input[type="text"]:focus, input[type="text"]:hover {
 .risk-option-button.risk-option-active {
   background: #000 !important;
   color: #fff !important;
+}
+.slide--risk {
+  padding-bottom: 7rem;
+}
+.risk-measures {
+  width: 80%;
+  max-width: 1200px;
+  display: flex;
+  padding: 2rem;
+  text-align: left;
+}
+.risk-measures p {
+  max-width: none;
+  margin: 0;
+  width: 80%;
 }
 
 /* quiz */

@@ -1,6 +1,6 @@
 // import PropTypes from "prop-types"
 // import React, { useState } from "react"
-import React, { useState } from "react"
+import React from "react"
 import { buttonize } from "../utils"
 
 const PaLinje = ({ data }) => {
@@ -28,7 +28,7 @@ const PaLinje = ({ data }) => {
 
   const Assertion = ({ assertion }) => {
     // const showBars = showBarsFor.includes(assertion.id)
-    const showBars = false
+    const showBars = true
     return (
       <section className="slide">
         <h2 className="statement-heading">Hvor enig er du?</h2>
@@ -37,17 +37,11 @@ const PaLinje = ({ data }) => {
           <div className="poll-distribution" style={{ maxHeight: "10rem" }}>
             {options.map(option => {
               const pct = optionsDistrib[option]
-              const lineLength = pct / 10
+              const lineLength = pct / 5
               const lineStyle = {
-                zIndex: 1,
-                backgroundColor: "red",
-                height: `${lineLength}em`,
-                width: "0.3rem",
-                display: "inline-block",
-                marginLeft: "1.85rem",
-                marginRight: "1.85rem",
+                height: `${lineLength}rem`,
               }
-              return <div style={lineStyle}></div>
+              return <div className="poll-line" style={lineStyle}></div>
             })}
           </div>
         )}

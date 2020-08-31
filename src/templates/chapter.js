@@ -78,13 +78,14 @@ export const NavigationWrapper = ({ children, pageContext, navigate }) => {
       <nav className={`slide-nav ${!moreSlides ? "next-chapter" : ""}`}>
         <span className="arrow-text left">
           {moreSlides && !hasClickedArrow && <>Klikk for å</>}
-          {!moreSlides && <>Neste kapittel</>}
+          {!moreSlides && <>Neste</>}
         </span>
         <div className="arrow-next-slide" {...buttonize(nextSlide)}>
           &darr;
         </div>
         <span className="arrow-text right">
           {moreSlides && !hasClickedArrow && <>gå til neste</>}
+          {!moreSlides && <>kapittel</>}
         </span>
       </nav>
     </>

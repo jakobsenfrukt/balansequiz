@@ -40,7 +40,7 @@ const Slide = ({ data, index }) => {
         />
         {citations && (
           <div
-            className="slide__content citations"
+            className="slide__citations"
             dangerouslySetInnerHTML={{ __html: citations.content }}
           />
         )}
@@ -64,7 +64,7 @@ const Slide = ({ data, index }) => {
         </div>
         {citations && (
           <div
-            className="slide__content citations"
+            className="slide__citations"
             dangerouslySetInnerHTML={{ __html: citations.content }}
           />
         )}
@@ -85,7 +85,7 @@ const Slide = ({ data, index }) => {
         </div>
         {citations && (
           <div
-            className="slide__content citations"
+            className="slide__citations"
             dangerouslySetInnerHTML={{ __html: citations.content }}
           />
         )}
@@ -111,7 +111,7 @@ const Slide = ({ data, index }) => {
         </div>
         {citations && (
           <div
-            className="slide__content citations"
+            className="slide__citations"
             dangerouslySetInnerHTML={{ __html: citations.content }}
           />
         )}
