@@ -1,3 +1,27 @@
+import { useState, useEffect } from "react"
+
+export const useHasMounted = () => {
+  const [hasMounted, setHasMounted] = useState(false)
+  useEffect(() => {
+    setHasMounted(true)
+  }, [])
+  return hasMounted
+}
+
+export const debounce = (func, wait) => {
+  let timeout
+
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout)
+      func(...args)
+    }
+
+    clearTimeout(timeout)
+    timeout = setTimeout(later, wait)
+  }
+}
+
 export const buttonize = handler => {
   return {
     role: "button",

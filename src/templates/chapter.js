@@ -1,9 +1,7 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { graphql, Link } from "gatsby"
-// import Img from "gatsby-image"
-// import Meta from "../components/Meta"
-import { buttonize, convertToRoman } from "../utils"
+import { buttonize, convertToRoman, useHasMounted, debounce } from "../utils"
 import Layout from "../components/layout"
 import Slide from "../components/slide"
 import Timeline from "../components/timeline"
@@ -11,25 +9,74 @@ import Quiz from "../components/quiz"
 import Risks from "../components/risk"
 import PaLinje from "../components/palinje"
 
-export const NavigationWrapper = ({ children }) => {
+export const NavigationWrapper = ({ children, pageContext, navigate }) => {
   const [hasClickedArrow, setHasClickedArrow] = useState(false)
+  const [moreSlides, setMoreSlides] = useState(true)
+
+  useEffect(() => {
+    const debouncedOnScroll = debounce(onScroll, 50)
+    window.addEventListener("scroll", debouncedOnScroll)
+    return () => {
+      window.removeEventListener("scroll", debouncedOnScroll)
+    }
+  })
+
+  const hasMounted = useHasMounted()
+  if (!hasMounted) {
+    return children
+  }
+
+  const onScroll = () => {
+    const nearEnd =
+      document.documentElement.scrollHeight -
+        window.scrollY -
+        window.innerHeight <
+      50
+    setMoreSlides(!nearEnd)
+  }
+
+  const findNextSlide = () => {
+    for (const slide of slides) {
+      if (window.scrollY + 10 >= slide.offsetTop) {
+        continue
+      }
+      return slide
+    }
+  }
+
+  const slides = document.getElementsByClassName("slide")
   const nextSlide = () => {
     setHasClickedArrow(true)
-    window.scrollBy(0, window.innerHeight)
+    if (!moreSlides && moreChapters) {
+      navigate(`/${pageContext.nextChapterPath}/`)
+      return
+    }
+    const slide = findNextSlide()
+    if (!slide) {
+      return
+    }
+    slide.scrollIntoView(true, { behaviour: "smooth" })
   }
+
+  const moreChapters = pageContext.nextChapterPath !== null
+  if (!moreSlides && !moreChapters) {
+    return children
+  }
+
   return (
     <>
       {children}
-      <nav className="slide-nav">
-        {!hasClickedArrow && (
-          <span className="arrow-text left">Klikk for å</span>
-        )}
+      <nav className={`slide-nav ${!moreSlides ? "next-chapter" : ""}`}>
+        <span className="arrow-text left">
+          {moreSlides && !hasClickedArrow && <>Klikk for å</>}
+          {!moreSlides && <>Neste kapittel</>}
+        </span>
         <div className="arrow-next-slide" {...buttonize(nextSlide)}>
           &darr;
         </div>
-        {!hasClickedArrow && (
-          <span className="arrow-text right">gå til neste</span>
-        )}
+        <span className="arrow-text right">
+          {moreSlides && !hasClickedArrow && <>gå til neste</>}
+        </span>
       </nav>
     </>
   )

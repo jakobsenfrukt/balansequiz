@@ -443,7 +443,13 @@ input[type="text"]:focus, input[type="text"]:hover {
   transform: scale(1.1);
 }
 
+.next-chapter .arrow-next-slide {
+  transform: rotate(-90deg);
+}
 
+.next-chapter .arrow-next-slide:hover {
+  transform: rotate(-90deg) scale(1.1);
+}
 
 
 /* tidslinje */
