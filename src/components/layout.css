@@ -377,14 +377,18 @@ h1 a {
 
 .slide__citations {
   opacity: .5;
-  text-align: right;
-  width: 100%;
   padding: 2rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform-origin: bottom right;
+  transform: rotate(90deg) translateY(100%);
+  text-align: right;
 }
 .slide__citations p {
-  font-size: 14px;
+  font-size: 12px;
   margin-right: 0;
-  max-width: 20rem;
+  max-width: 16rem;
 }
 
 
@@ -709,19 +713,21 @@ input[type="text"]:focus, input[type="text"]:hover {
   color: #fff !important;
 }
 .slide--risk {
-  padding-bottom: 7rem;
+  padding-bottom: 1rem;
 }
 .risk-measures {
-  width: 80%;
+  width: 90%;
   max-width: 1200px;
   display: flex;
   padding: 2rem;
   text-align: left;
+  background: #f5efd6;
+  border-radius: 2rem;
 }
 .risk-measures p {
   max-width: none;
   margin: 0;
-  width: 80%;
+  width: 90%;
 }
 
 /* quiz */
