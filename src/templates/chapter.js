@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { graphql, Link } from "gatsby"
 import { buttonize, convertToRoman, useHasMounted, debounce } from "../utils"
+import SEO from "../components/seo"
 import Layout from "../components/layout"
 import Slide from "../components/slide"
 import Timeline from "../components/timeline"
@@ -12,6 +13,7 @@ import PaLinje from "../components/palinje"
 export const NavigationWrapper = ({ children, pageContext, navigate }) => {
   const [hasClickedArrow, setHasClickedArrow] = useState(false)
   const [moreSlides, setMoreSlides] = useState(true)
+  const [didInitialSlideCheck, setDidInitialSlideCheck] = useState(false)
 
   useEffect(() => {
     const debouncedOnScroll = debounce(onScroll, 50)
@@ -33,6 +35,11 @@ export const NavigationWrapper = ({ children, pageContext, navigate }) => {
         window.innerHeight <
       50
     setMoreSlides(!nearEnd)
+  }
+
+  if (!didInitialSlideCheck) {
+    onScroll()
+    setDidInitialSlideCheck(true)
   }
 
   const findNextSlide = () => {
@@ -139,6 +146,7 @@ const ChapterPage = ({ data, pageContext }) => {
 
   return (
     <Layout>
+      <SEO title={title} />
       <ChapterTemplate
         title={title}
         slug={slug}
