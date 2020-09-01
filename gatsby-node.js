@@ -34,10 +34,8 @@ exports.createPages = ({ actions, graphql }) => {
       const nextChapterPath =
         index < chapters.length - 1 ? chapters[index + 1].slug : null
       let path = chapter.slug
-      let showNextChapterButton = true
       if (chapter.slug === "intro") {
         path = "/"
-        showNextChapterButton = false
       }
       console.log("creating page", path, 'from slug', chapter.slug)
 
@@ -48,7 +46,7 @@ exports.createPages = ({ actions, graphql }) => {
           id: chapter.id,
           index: index,
           showNavigation: true,
-          showNextChapterButton: showNextChapterButton,
+          showNextChapterButton: true,
           nextChapterPath: nextChapterPath,
         },
       })

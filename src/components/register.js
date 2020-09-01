@@ -27,7 +27,7 @@ const Register = ({ data, onSend }) => {
           </div>
         ))}
         <div className="button" role="button" {...buttonize(() => sendForm())}>
-          Send inn og start kurset
+          Send inn
         </div>
       </div>
     </section>
