@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { graphql, Link } from "gatsby"
-import { convertToRoman } from "../utils"
+import { convertToRoman, buttonize } from "../utils"
+import { useChapterData } from "../hooks/use-chapter-data"
 import SEO from "../components/seo"
 import Layout from "../components/layout"
 import Slide from "../components/slide"
@@ -10,6 +11,55 @@ import Quiz from "../components/quiz"
 import Risks from "../components/risk"
 import PaLinje from "../components/palinje"
 import Register from "../components/register"
+
+const ChapterHeader = ({ currentIndex, currentTitle }) => {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const { chapters } = useChapterData()
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen)
+  }
+  return (
+    <header
+      className={`chapter-header chapter-header-nav-${
+        menuOpen ? "open" : "closed"
+      }`}
+    >
+      {menuOpen &&
+        chapters.map((chapter, index) => {
+          return (
+            <div
+              className={`chapter-header-nav ${
+                currentIndex === index
+                  ? "chapter-header-nav-current"
+                  : ""
+              }`}
+            >
+              <Link to={chapter.path}>
+                {index !== 0 && (
+                  <>Del {convertToRoman(index)}: </>
+                )}
+                {chapter.title}
+              </Link>
+            </div>
+          )
+        })}
+      {menuOpen && (
+        <div className="chapter-nav-close" {...buttonize(() => toggleMenu())}>
+          Lukk
+        </div>
+      )}
+      {!menuOpen && (
+        <div
+          className="chapter-header-current"
+          {...buttonize(() => toggleMenu())}
+        >
+          Del {convertToRoman(currentIndex)}: {currentTitle}
+        </div>
+      )}
+    </header>
+  )
+}
 
 export const ChapterTemplate = ({
   title,
@@ -26,11 +76,7 @@ export const ChapterTemplate = ({
   return (
     <>
       {index !== 0 && (
-        <header className="chapter-header">
-          <Link to="/chapters">
-            Del {convertToRoman(index)}: {title}
-          </Link>
-        </header>
+        <ChapterHeader currentIndex={index} currentTitle={title} />
       )}
       {slides.map((slide, index) => (
         <Slide key={"slide" + index} data={slide} index={index} />
