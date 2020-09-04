@@ -24,9 +24,35 @@ export const NavigationWrapper = ({ children, pageContext, navigate }) => {
     }
   })
 
+  useEffect(() => {
+    window.addEventListener("keydown", keyDownHandler)
+
+    return () => {
+      window.removeEventListener("keydown", keyDownHandler)
+    }
+  })
+
   const hasMounted = useHasMounted()
   if (!hasMounted) {
     return children
+  }
+
+  const keyDownHandler = ({ key, view }) => {
+    if (key === "ArrowDown") {
+      if (moreSlides) {
+        nextSlide()
+        view.event.preventDefault()
+      }
+    }
+    if (key === "ArrowUp") {
+      previousSlide()
+      view.event.preventDefault()
+    }
+    if (key === "ArrowRight") {
+      if (!moreSlides && moreChapters) {
+        nextSlide()
+      }
+    }
   }
 
   const onScroll = () => {
@@ -43,27 +69,42 @@ export const NavigationWrapper = ({ children, pageContext, navigate }) => {
     setDidInitialSlideCheck(true)
   }
 
-  const findNextSlide = () => {
+  const findNearbySlides = () => {
+    let previous, current, next
     for (const slide of slides) {
       if (window.scrollY + 10 >= slide.offsetTop) {
+        previous = current
+        current = slide
         continue
       }
-      return slide
+      next = slide
+      break
     }
+    return { previous: previous, next: next }
   }
 
   const slides = document.getElementsByClassName("slide")
+
   const nextSlide = () => {
     setHasClickedArrow(true)
     if (!moreSlides && moreChapters) {
       navigate(`/${pageContext.nextChapterPath}/`)
       return
     }
-    const slide = findNextSlide()
-    if (!slide) {
+    const { next } = findNearbySlides()
+    if (!next) {
       return
     }
-    slide.scrollIntoView({ behavior: "smooth" })
+    next.scrollIntoView({ behavior: "smooth" })
+  }
+
+  const previousSlide = () => {
+    setHasClickedArrow(true)
+    const { previous } = findNearbySlides()
+    if (!previous) {
+      return
+    }
+    previous.scrollIntoView({ behavior: "smooth" })
   }
 
   const moreChapters =
