@@ -5,7 +5,7 @@
  */
 
 import React from "react"
-import { NavigationWrapper } from "./src/templates/chapter.js"
+import { NavigationWrapper } from "./src/components/navigation.js"
 
 export const wrapPageElement = ({ element, props }) => {
   if (!props.pageContext.showNavigation) {
