@@ -61,7 +61,10 @@ const Register = ({ data, onSend }) => {
                 type="text"
                 aria-label={input.question}
                 placeholder={input.placeholder || ""}
-                onInput={e => setOrgName(e.target.value)}
+                onInput={e => {
+                  setErrorMessage("")
+                  setOrgName(e.target.value)
+                }}
               ></input>
             </label>
             <p>{input.description}</p>
