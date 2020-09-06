@@ -282,6 +282,7 @@ export const chapterQuery = graphql`
             assertions: paLinje {
               __typename
               ... on Balanse_PaLinjeAssertion {
+                id
                 text
               }
             }

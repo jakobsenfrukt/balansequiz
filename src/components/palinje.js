@@ -1,34 +1,76 @@
-// import PropTypes from "prop-types"
-// import React, { useState } from "react"
-import React from "react"
-import { buttonize } from "../utils"
+import React, { useState } from "react"
+import { buttonize, uuidv4 } from "../utils"
+import { useSiteMetadata } from "../hooks/use-site-metadata"
 
 const PaLinje = ({ data }) => {
-  //   const [currentAssertion, setCurrentAssertion] = useState(0)
-  //   const [complete, setComplete] = useState(false)
-  // const [showBarsFor, setShowBarsFor] = useState([])
-
+  const [anonymousId, setAnonymousId] = useState("")
+  const [distributions, setDistributions] = useState({})
+  const { balanseDataApiUrl } = useSiteMetadata()
   const { assertions } = data
 
+  if (anonymousId === "") {
+    const uuid = uuidv4()
+    setAnonymousId(uuid)
+  }
+
   const options = [...Array(7).keys()].map(x => x + 1)
-  const optionsDistrib = {
-    1: 5,
-    2: 5,
-    3: 0,
-    4: 15,
-    5: 5,
-    6: 30,
-    7: 40,
+
+  const sendChoice = (statementId, choice) => {
+    const payload = {
+      participant: anonymousId,
+      statement_id: statementId,
+      agreement: choice,
+    }
+    fetch(`${balanseDataApiUrl}/agreements/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Success:", data)
+        fetchDistribution(statementId)
+      })
+      .catch(error => {
+        console.error("Error:", error)
+      })
   }
 
-  const makeChoice = choice => {
-    console.log("Chose", choice)
-    // setShowBarsFor(showBarsFor.concat[choice])
+  const fetchDistribution = statementId => {
+    fetch(`${balanseDataApiUrl}/agreementDistribution/${statementId}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log("Success:", data)
+        if (!distributions.hasOwnProperty(statementId)) {
+          console.log("before", distributions)
+          console.log("statement id is", statementId)
+          console.log("data.distribution is", data.distribution)
+          setDistributions({
+            ...{ [statementId]: data.distribution },
+            ...distributions,
+          })
+          console.log("after", distributions)
+        }
+        return data
+      })
+      .catch(error => {
+        console.error("Error:", error)
+      })
+    return null
   }
 
-  const Assertion = ({ assertion }) => {
-    // const showBars = showBarsFor.includes(assertion.id)
-    const showBars = true
+  const makeChoice = (statementId, choice) => {
+    sendChoice(statementId, choice)
+  }
+
+  const showResults = statementId => {
+    fetchDistribution(statementId)
+  }
+
+  const Assertion = ({ assertion, distribution }) => {
+    const showBars = distribution !== null
     return (
       <section className="slide">
         <h2 className="statement-heading">Hvor enig er du?</h2>
@@ -36,7 +78,9 @@ const PaLinje = ({ data }) => {
         {showBars && (
           <div className="poll-distribution" style={{ maxHeight: "10rem" }}>
             {options.map(option => {
-              const pct = optionsDistrib[option]
+              const thisDistribution =
+                distribution.filter(x => x.agreement === option)[0] || null
+              const pct = thisDistribution && thisDistribution.percent
               const lineLength = pct / 5
               const lineStyle = {
                 height: `${lineLength}rem`,
@@ -53,7 +97,7 @@ const PaLinje = ({ data }) => {
               return (
                 <div
                   className="poll-option-button"
-                  {...buttonize(() => makeChoice(option))}
+                  {...buttonize(() => makeChoice(assertion.id, option))}
                 >
                   {option}
                 </div>
@@ -62,11 +106,21 @@ const PaLinje = ({ data }) => {
           </div>
           <div className="poll-option-label">Enig</div>
         </div>
+        {!showBars && (
+          <div
+            className="button statement-show-results"
+            {...buttonize(() => showResults(assertion.id))}
+          >
+            Vis resultat
+          </div>
+        )}
       </section>
     )
   }
 
-  return assertions.map(x => <Assertion assertion={x} />)
+  return assertions.map(x => (
+    <Assertion assertion={x} distribution={distributions[x.id] || null} />
+  ))
 }
 
 export default PaLinje
