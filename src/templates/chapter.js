@@ -25,6 +25,11 @@ const ChapterHeader = ({ currentIndex, currentTitle }) => {
         menuOpen ? "open" : "closed"
       }`}
     >
+      {menuOpen && (
+        <div className="chapter-nav-close" {...buttonize(() => toggleMenu())}>
+          &times;&nbsp; Skjul kapitteloversikt
+        </div>
+      )}
       {menuOpen &&
         chapters.map((chapter, index) => {
           return (
@@ -44,17 +49,15 @@ const ChapterHeader = ({ currentIndex, currentTitle }) => {
             </div>
           )
         })}
-      {menuOpen && (
-        <div className="chapter-nav-close" {...buttonize(() => toggleMenu())}>
-          Lukk
-        </div>
-      )}
       {!menuOpen && (
         <div
           className="chapter-header-current"
           {...buttonize(() => toggleMenu())}
         >
-          Del {convertToRoman(currentIndex)}: {currentTitle}
+          {currentIndex !== 0 && (
+            <>Del {convertToRoman(currentIndex)}: </>
+          )}
+          {currentTitle}
         </div>
       )}
     </header>
@@ -75,9 +78,7 @@ export const ChapterTemplate = ({
 }) => {
   return (
     <>
-      {index !== 0 && (
-        <ChapterHeader currentIndex={index} currentTitle={title} />
-      )}
+      <ChapterHeader currentIndex={index} currentTitle={title} />
       {slides.map((slide, index) => (
         <Slide key={"slide" + index} data={slide} index={index} />
       ))}
