@@ -44,14 +44,10 @@ const PaLinje = ({ data }) => {
       .then(data => {
         console.log("Success:", data)
         if (!distributions.hasOwnProperty(statementId)) {
-          console.log("before", distributions)
-          console.log("statement id is", statementId)
-          console.log("data.distribution is", data.distribution)
           setDistributions({
             ...{ [statementId]: data.distribution },
             ...distributions,
           })
-          console.log("after", distributions)
         }
         return data
       })
