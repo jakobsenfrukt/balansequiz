@@ -1,5 +1,5 @@
-// import PropTypes from "prop-types"
 import React, { useState } from "react"
+import ScrollContainer from "react-indiana-drag-scroll"
 import { buttonize } from "../utils"
 
 const Timeline = ({ data }) => {
@@ -40,28 +40,30 @@ const Timeline = ({ data }) => {
       <h2 className="timeline-heading">{title}</h2>
       <div className="timeline-statement">{task.toBePlaced}</div>
       <p className="information">Dra eller scroll for å se hele &rarr;</p>
-      <div className="timeline-wrapper">
-        <div className="timeline-scroll">
-          <div className="timeline">
-            <div className="timeline-options">
-              {possibleChoices.map((choice, index) => {
-                const used = usedChoices.includes(choice)
-                return (
-                  <div
-                    className={`timeline-option-button ${
-                      used ? "timeline-option-used" : ""
-                    }`}
-                    key={"choice" + index}
-                    {...buttonize(() => makeChoice(choice))}
-                  >
-                    {choice}
-                  </div>
-                )
-              })}
-            </div>
+      <ScrollContainer
+        className="scroll-container timeline-wrapper"
+        vertical={false}
+        horizontal={true}
+      >
+        <div className="timeline">
+          <div className="timeline-options">
+            {possibleChoices.map((choice, index) => {
+              const used = usedChoices.includes(choice)
+              return (
+                <div
+                  className={`timeline-option-button ${
+                    used ? "timeline-option-used" : ""
+                  }`}
+                  key={"choice" + index}
+                  {...buttonize(() => makeChoice(choice))}
+                >
+                  {choice}
+                </div>
+              )
+            })}
           </div>
         </div>
-      </div>
+      </ScrollContainer>
       {showFact && (
         <div className="timeline-feedback">
           <p className="timeline-feedback__message">Riktig!</p>
