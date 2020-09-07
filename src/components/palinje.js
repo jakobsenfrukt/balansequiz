@@ -73,7 +73,7 @@ const PaLinje = ({ data }) => {
     const showBars = distribution !== null
     return (
       <section className="slide">
-        <h2 className="statement-heading">Hvor enig er du?</h2>
+        <h2 className="statement-heading">Hva mener du?</h2>
         <p className="statement">{assertion.text}</p>
         {showBars && (
           <div className="poll-distribution" style={{ maxHeight: "10rem" }}>

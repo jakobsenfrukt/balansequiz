@@ -7,6 +7,7 @@ const Timeline = ({ data }) => {
   const [showFact, setShowFact] = useState(false)
   const [complete, setComplete] = useState(false)
   const [usedChoices, setUsedChoices] = useState([])
+  const [feedback, setFeedback] = useState("")
 
   const { title, tasks } = data
   const possibleChoices = tasks.map(x => x.year)
@@ -19,11 +20,14 @@ const Timeline = ({ data }) => {
     if (correct) {
       setUsedChoices(usedChoices.concat([choice]))
       setShowFact(true)
+    } else {
+      setFeedback("Niks!")
     }
   }
 
   const nextTask = () => {
     setShowFact(false)
+    setFeedback("")
     if (currentTask === tasks.length - 1) {
       setComplete(true)
     } else {
@@ -64,6 +68,9 @@ const Timeline = ({ data }) => {
           </div>
         </div>
       </ScrollContainer>
+      {feedback && (
+        <div className="timeline-feedback-wrong">Niks!</div>
+      )}
       {showFact && (
         <div className="timeline-feedback">
           <p className="timeline-feedback__message">Riktig!</p>
@@ -75,7 +82,7 @@ const Timeline = ({ data }) => {
               }}
             />
           )}
-          <div className="button" {...buttonize(nextTask)}>
+          <div className="button button--timeline-right-answer" {...buttonize(nextTask)}>
             Neste oppgave &rarr;
           </div>
         </div>

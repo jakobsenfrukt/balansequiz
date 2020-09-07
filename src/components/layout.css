@@ -343,7 +343,7 @@ h1 a {
   cursor: pointer;
 }
 
-.chapter-header-nav-closed .chapter-header-nav-current:hover,
+.chapter-header-nav-closed .chapter-header-current:hover,
 .chapter-header-nav:hover,
 .chapter-nav-close:hover,
 .chapter-header-nav-open .chapter-header-nav-current {
@@ -352,6 +352,7 @@ h1 a {
 
 .chapter-header-nav {
   padding: .25rem 0 .25rem;
+  margin-bottom: .25rem;
 }
 
 .chapter-nav-close {
@@ -612,6 +613,15 @@ input[type="text"]:focus, input[type="text"]:hover {
   font-size: 1.4rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+.button--timeline-right-answer {
+  background: #76C2AF;
+  color: #000;
+}
+
+.button--timeline-right-answer:hover {
+  color: #000;
 }
 
 @media (max-width: 800px) {
