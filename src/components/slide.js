@@ -9,7 +9,14 @@ const Slide = ({ data, index }) => {
   const slideStyle = { backgroundColor: backgroundColorHex }
   const darkColors = ["#e269a3", "#0f4138"]
   const bgIsDark = darkColors.includes(backgroundColorHex.toLowerCase())
-  const extraClasses = bgIsDark ? "invert" : ""
+  const bgIsWhite = function() {
+    if (backgroundColor) {
+      return backgroundColorHex === "#ffffff"
+    } else {
+      return true
+    }
+  }
+  const extraClasses = `${bgIsDark ? "invert" : ""} ${bgIsWhite() ? "" : "bgcolor"}`
 
   if (type === "Balanse_SlideKapittelforside") {
     const { images, chapterTitle: title } = data

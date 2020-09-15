@@ -445,6 +445,28 @@ h1 a {
   margin-bottom: 1rem;
 }
 
+.slide:nth-of-type(odd) .slide__content h1,
+.slide:nth-of-type(odd) .slide__content h2,
+.slide:nth-of-type(odd) .slide__content .big-number,
+.slide:nth-of-type(odd) .slide__content .big-text {
+  color: #76C2AF;
+}
+
+.slide:nth-of-type(even) .slide__content h1,
+.slide:nth-of-type(even) .slide__content h2,
+.slide:nth-of-type(even) .slide__content .big-number,
+.slide:nth-of-type(even) .slide__content .big-text {
+  color: #E269A3;
+}
+
+.slide.bgcolor h1,
+.slide.bgcolor h2,
+.slide.bgcolor .big-number,
+.slide.bgcolor .big-text,
+.slide--chapter-front h1 {
+  color: inherit !important;
+}
+
 .slide__content figure {
   margin: 2rem auto;
   padding: 56.25% 0 0;
