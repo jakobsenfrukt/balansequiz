@@ -66,44 +66,61 @@ const PaLinje = ({ data }) => {
   }*/
 
   const Assertion = ({ assertion, distribution }) => {
-    const showBars = distribution !== null
+    const showLines = distribution !== null
     return (
       <section className="slide">
         <h2 className="statement-heading">Hva mener du?</h2>
         <p className="statement">{assertion.text}</p>
-        {showBars && (
-          <div className="poll-distribution" style={{ maxHeight: "10rem" }}>
-            {options.map((option, index) => {
-              const thisDistribution =
-                distribution.filter(x => x.agreement === option)[0] || null
-              const pct = thisDistribution && thisDistribution.percent
-              const lineLength = pct / 5
-              const lineStyle = {
-                height: `${lineLength}rem`,
-              }
-              return <div className="poll-line" key={index} style={lineStyle}></div>
-            })}
-          </div>
-        )}
-        <div className="poll-options">
+        <div
+          className={`poll-options ${
+            showLines ? "poll-options-has-lines" : ""
+          }`}
+        >
           <div className="poll-option-label">Uenig</div>
+
           <div className="poll-option-buttons">
             <div className="poll-option-buttons__line"></div>
             {options.map((option, index) => {
               return (
-                <div
-                  className="poll-option-button"
-                  key={index}
-                  {...buttonize(() => makeChoice(assertion.id, option))}
-                >
-                  {option}
+                <div className="poll-option-column">
+                  {showLines && (
+                    <div
+                      className="poll-distribution"
+                      style={{ maxHeight: "10rem" }}
+                    >
+                      {(() => {
+                        const thisDistribution =
+                          distribution.filter(x => x.agreement === option)[0] ||
+                          null
+                        const pct = thisDistribution && thisDistribution.percent
+                        const lineLength = pct / 5
+                        const lineStyle = {
+                          height: `${lineLength}rem`,
+                        }
+                        return (
+                          <div
+                            className="poll-line"
+                            key={index}
+                            style={lineStyle}
+                          ></div>
+                        )
+                      })()}
+                    </div>
+                  )}
+                  <div
+                    className="poll-option-button"
+                    key={index}
+                    {...buttonize(() => makeChoice(assertion.id, option))}
+                  >
+                    {option}
+                  </div>
                 </div>
               )
             })}
           </div>
           <div className="poll-option-label">Enig</div>
         </div>
-        {/* !showBars && (
+        {/* !showLines && (
           <div
             className="button button--small statement-show-results"
             {...buttonize(() => showResults(assertion.id))}
@@ -116,7 +133,11 @@ const PaLinje = ({ data }) => {
   }
 
   return assertions.map((x, index) => (
-    <Assertion assertion={x} distribution={distributions[x.id] || null} key={index} />
+    <Assertion
+      assertion={x}
+      distribution={distributions[x.id] || null}
+      key={index}
+    />
   ))
 }
 
