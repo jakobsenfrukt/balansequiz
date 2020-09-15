@@ -76,7 +76,7 @@ const Slide = ({ data, index }) => {
     const { quote, quoteDescription, citations } = data
     return (
       <section className={`slide ${extraClasses}`} style={slideStyle}>
-        <div className="slide__content">
+        <div className="slide__content slide__content--quote">
           <blockquote className="slide__quote">{quote}</blockquote>
           <div
             className="quote-description"

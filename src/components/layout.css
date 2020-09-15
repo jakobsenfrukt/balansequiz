@@ -124,6 +124,7 @@ h4 {
 }
 
 p {
+  width: 100%;
   max-width: 500px;
   margin: 0 auto 1rem;
 }
@@ -137,12 +138,12 @@ ul {
 ul, ol {
   text-align: left;
   margin: 0 auto;
-  max-width: 500px;
 }
 
 ul li {
-  margin-bottom: 1.4rem;
+  margin: 0 auto 1.4rem;
   position: relative;
+  max-width: 500px;
 }
 
 ul li:before {
@@ -152,7 +153,24 @@ ul li:before {
   display: block;
   position: absolute;
   top: -.15em;
-  left: -1.5em;
+  left: -1.6em;
+}
+
+blockquote {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+  position: relative;
+}
+blockquote:before {
+  content: "”";
+  display: block;
+  position: absolute;
+  top: .1rem;
+  left: -1.5rem;
+  line-height: 1;
+  font-size: 2rem;
 }
 
 .button {
@@ -190,22 +208,64 @@ ul li:before {
   transform: scale(1.05);
 }
 
-.slide.invert ul li:before {
-  content: url(../images/wave-white.svg);
+
+
+
+
+
+
+
+.chapter-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 14px;
+  padding: 2rem;
+  z-index: 10;
+  text-align: right;
+  cursor: pointer;
 }
 
-.slide__quote {
-  font-size: 4rem;
-  line-height: 1.1;
+.chapter-header-nav-closed .chapter-header-current:hover,
+.chapter-header-nav:hover,
+.chapter-nav-close:hover,
+.chapter-header-nav-open .chapter-header-nav-current {
+  font-weight: bold;
 }
 
-.slide__quote:before {
-  content: '”';
+.chapter-header-nav {
+  padding: .25rem 0 .25rem;
+  margin-bottom: .25rem;
+}
+
+.chapter-nav-close {
+  padding: 0 0 .25rem 1rem;
+}
+
+.chapter-header a {
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .chapter-header {
+    padding: .5rem;
+  }
+}
+
+.chapter-no {
   display: block;
-  font-size: 10rem;
-  line-height: .8;
-  margin-top: -4rem;
+  font-size: 1rem;
+  margin: 0 auto 1rem;
 }
+
+
+
+
+
+
+
 
 h1 a {
   text-decoration: none;
@@ -255,6 +315,33 @@ h1 a {
 
 .column h2, .column p {
   text-align: left;
+}
+
+.slide__content p {
+  text-align: left;
+}
+
+.slide__content--quote p {
+  text-align: center;
+}
+
+
+.slide.invert ul li:before {
+  content: url(../images/wave-white.svg);
+}
+
+.slide__quote {
+  font-size: 4rem;
+  line-height: 1.1;
+  max-width: none;
+}
+
+.slide__quote:before {
+  content: '”';
+  display: block;
+  font-size: 10rem;
+  line-height: .8;
+  margin-top: -4rem;
 }
 
 .slide__content img {
@@ -332,62 +419,15 @@ h1 a {
   font-weight: 900;
   line-height: 1;
   max-width: none;
+  text-align: center !important;
 }
 
 .big-number {
   margin-top: -1rem;
 }
 
-
-
-
-
-
-
-
-.chapter-header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 14px;
-  padding: 2rem;
-  z-index: 10;
-  text-align: right;
-  cursor: pointer;
-}
-
-.chapter-header-nav-closed .chapter-header-current:hover,
-.chapter-header-nav:hover,
-.chapter-nav-close:hover,
-.chapter-header-nav-open .chapter-header-nav-current {
-  font-weight: bold;
-}
-
-.chapter-header-nav {
-  padding: .25rem 0 .25rem;
-  margin-bottom: .25rem;
-}
-
-.chapter-nav-close {
-  padding: 0 0 .25rem 1rem;
-}
-
-.chapter-header a {
-  text-decoration: none;
-}
-
-@media (max-width: 900px) {
-  .chapter-header {
-    padding: .5rem;
-  }
-}
-
-.chapter-no {
-  display: block;
-  font-size: 1rem;
-  margin: 0 auto 1rem;
+.slide__register p {
+  text-align: center;
 }
 
 .information {
