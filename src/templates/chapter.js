@@ -39,10 +39,9 @@ const ChapterHeader = ({ currentIndex, currentTitle }) => {
                   ? "chapter-header-nav-current"
                   : ""
               }`}
-              style={{ animationDelay: index }}
               key={index}
             >
-              <Link to={chapter.path} style={{ animationDelay: index }}>
+              <Link to={chapter.path} style={{ animationDelay: `${index}s` }}>
                 {index !== 0 && (
                   <>Del {convertToRoman(index)}: </>
                 )}
