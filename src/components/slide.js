@@ -13,7 +13,7 @@ const Slide = ({ data, index }) => {
   const extraClasses = `${bgIsDark ? "invert" : ""} ${bgIsWhite ? "" : "bgcolor"}`
 
   if (type === "Balanse_SlideKapittelforside") {
-    const { images, chapterTitle: title } = data
+    const { images, lead, chapterTitle: title } = data
     const imageUrl = images && images.length !== 0 ? images[0].url : null
     return (
       <section
@@ -25,6 +25,7 @@ const Slide = ({ data, index }) => {
             <span className="chapter-no">Del {convertToRoman(index)}</span>
           )}
           <h1>{title}</h1>
+          {lead && <div className="slide--chapter-front--lead">{lead}</div>}
           {imageUrl && <img src={imageUrl} alt="" />}
         </div>
       </section>

@@ -164,6 +164,7 @@ export const chapterQuery = graphql`
             __typename
             ... on Balanse_SlideKapittelforside {
               chapterTitle
+              lead
               images {
                 id
                 url

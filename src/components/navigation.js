@@ -72,7 +72,6 @@ export const NavigationWrapper = ({ children, pageContext, navigate }) => {
     setDidInitialSlideCheck(true)
   }
 
-
   const nextSlide = () => {
     setHasClickedArrow(true)
     if (!moreSlides && moreChapters) {
