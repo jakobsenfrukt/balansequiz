@@ -238,8 +238,10 @@ blockquote:before {
 .chapter-header-nav-open .chapter-header-nav a {
   display: inline-block;
   background: #acd8cd;
+  transform: translateX(100%);
+  opacity: 0;
   padding: .2rem .4rem .2rem .4rem;
-  animation: slideIn .3s ease;
+  animation: slideIn forwards .5s ease;
 }
 
 @keyframes slideIn {

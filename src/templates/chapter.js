@@ -41,7 +41,7 @@ const ChapterHeader = ({ currentIndex, currentTitle }) => {
               }`}
               key={index}
             >
-              <Link to={chapter.path} style={{ animationDelay: `${index}s` }}>
+              <Link to={chapter.path} style={{ animationDelay: `${index/10}s` }}>
                 {index !== 0 && (
                   <>Del {convertToRoman(index)}: </>
                 )}
