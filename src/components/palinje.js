@@ -61,9 +61,9 @@ const PaLinje = ({ data }) => {
     sendChoice(statementId, choice)
   }
 
-  const showResults = statementId => {
+  /*const showResults = statementId => {
     fetchDistribution(statementId)
-  }
+  }*/
 
   const Assertion = ({ assertion, distribution }) => {
     const showBars = distribution !== null
@@ -103,14 +103,14 @@ const PaLinje = ({ data }) => {
           </div>
           <div className="poll-option-label">Enig</div>
         </div>
-        {!showBars && (
+        {/* !showBars && (
           <div
             className="button button--small statement-show-results"
             {...buttonize(() => showResults(assertion.id))}
           >
             Vis resultat
           </div>
-        )}
+        )*/}
       </section>
     )
   }

@@ -39,6 +39,7 @@ const ChapterHeader = ({ currentIndex, currentTitle }) => {
                   ? "chapter-header-nav-current"
                   : ""
               }`}
+              key={index}
             >
               <Link to={chapter.path}>
                 {index !== 0 && (
