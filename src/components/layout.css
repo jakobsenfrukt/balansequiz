@@ -358,6 +358,10 @@ h1 a {
   text-align: left;
 }
 
+.slide__content a.button {
+  text-align: center;
+}
+
 .slide__content--quote p {
   text-align: center;
 }
