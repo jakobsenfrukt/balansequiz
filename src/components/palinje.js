@@ -73,7 +73,7 @@ const PaLinje = ({ data }) => {
         <p className="statement">{assertion.text}</p>
         {showBars && (
           <div className="poll-distribution" style={{ maxHeight: "10rem" }}>
-            {options.map(option => {
+            {options.map((option, index) => {
               const thisDistribution =
                 distribution.filter(x => x.agreement === option)[0] || null
               const pct = thisDistribution && thisDistribution.percent
@@ -81,7 +81,7 @@ const PaLinje = ({ data }) => {
               const lineStyle = {
                 height: `${lineLength}rem`,
               }
-              return <div className="poll-line" style={lineStyle}></div>
+              return <div className="poll-line" key={index} style={lineStyle}></div>
             })}
           </div>
         )}
@@ -89,10 +89,11 @@ const PaLinje = ({ data }) => {
           <div className="poll-option-label">Uenig</div>
           <div className="poll-option-buttons">
             <div className="poll-option-buttons__line"></div>
-            {options.map(option => {
+            {options.map((option, index) => {
               return (
                 <div
                   className="poll-option-button"
+                  key={index}
                   {...buttonize(() => makeChoice(assertion.id, option))}
                 >
                   {option}
@@ -104,7 +105,7 @@ const PaLinje = ({ data }) => {
         </div>
         {!showBars && (
           <div
-            className="button statement-show-results"
+            className="button button--small statement-show-results"
             {...buttonize(() => showResults(assertion.id))}
           >
             Vis resultat
@@ -114,8 +115,8 @@ const PaLinje = ({ data }) => {
     )
   }
 
-  return assertions.map(x => (
-    <Assertion assertion={x} distribution={distributions[x.id] || null} />
+  return assertions.map((x, index) => (
+    <Assertion assertion={x} distribution={distributions[x.id] || null} key={index} />
   ))
 }
 
