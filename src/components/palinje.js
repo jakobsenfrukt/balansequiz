@@ -98,11 +98,16 @@ const PaLinje = ({ data }) => {
                           height: `${lineLength}rem`,
                         }
                         return (
-                          <div
-                            className="poll-line"
-                            key={index}
-                            style={lineStyle}
-                          ></div>
+                          <>
+                            <div className="poll-percent">
+                              {pct ? `${pct}%` : ""}
+                            </div>
+                            <div
+                              className="poll-line"
+                              key={index}
+                              style={lineStyle}
+                            ></div>
+                          </>
                         )
                       })()}
                     </div>
