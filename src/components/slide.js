@@ -77,7 +77,7 @@ const Slide = ({ data, index }) => {
     return (
       <section className={`slide ${extraClasses}`} style={slideStyle}>
         <div className="slide__content">
-          <blockquote>{quote}</blockquote>
+          <blockquote className="slide__quote">{quote}</blockquote>
           <div
             className="quote-description"
             dangerouslySetInnerHTML={{ __html: quoteDescription.content }}
