@@ -45,22 +45,11 @@ export const NavigationWrapper = ({ children, pageContext, navigate }) => {
     }
   }
 
-  const onScroll = () => {
-    const nearEnd =
-      document.documentElement.scrollHeight -
-        window.scrollY -
-        window.innerHeight <
-      50
-    setMoreSlides(!nearEnd)
-  }
-
-  if (!didInitialSlideCheck) {
-    onScroll()
-    setDidInitialSlideCheck(true)
-  }
+  const slides = document.getElementsByClassName("slide")
 
   const findNearbySlides = () => {
     let previous, current, next
+    previous = current = next = null
     for (const slide of slides) {
       if (window.scrollY + 10 >= slide.offsetTop) {
         previous = current
@@ -73,7 +62,16 @@ export const NavigationWrapper = ({ children, pageContext, navigate }) => {
     return { previous: previous, next: next }
   }
 
-  const slides = document.getElementsByClassName("slide")
+  const onScroll = () => {
+    const { next } = findNearbySlides()
+    setMoreSlides(next !== null)
+  }
+
+  if (!didInitialSlideCheck) {
+    onScroll()
+    setDidInitialSlideCheck(true)
+  }
+
 
   const nextSlide = () => {
     setHasClickedArrow(true)
