@@ -43,11 +43,14 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  padding: 2rem;
+  right: 0;
+  padding: .6rem 1rem;
   z-index: 20;
+  background: #000;
+  color: #fff;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 800px) {
   .site-header {
     position: fixed;
   }
@@ -55,10 +58,19 @@ body {
 
 .site-title {
   font-size: 1rem;
+  margin: 0;
 }
 
 .logo {
-  width: 12rem;
+  width: 10rem;
+}
+.st0 {
+  fill:#efefef;
+}
+@media (max-width: 800px) {
+  .st0 {
+    fill: #000;
+  }
 }
 
 .site-main {
@@ -222,10 +234,20 @@ blockquote:before {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 14px;
-  padding: 2rem;
-  z-index: 10;
+  padding: 1.3rem;
+  z-index: 100;
   text-align: right;
+  color: #fff;
   cursor: pointer;
+}
+
+.chapter-header-title {
+  display: inline-block;
+  margin-left: .6rem;
+}
+
+.chapter-header a {
+  color: #fff;
 }
 
 .chapter-header-nav-closed .chapter-header-current:hover,
@@ -235,13 +257,22 @@ blockquote:before {
   font-weight: bold;
 }
 
-.chapter-header-nav-open .chapter-header-nav a {
+.chapter-header-nav {
+  margin: 0;
+  padding: .1rem 0;
+}
+
+.chapter-header-nav a {
   display: inline-block;
-  background: #acd8cd;
+  background: #000;
   transform: translateX(100%);
   opacity: 0;
-  padding: .2rem .4rem .2rem .4rem;
-  animation: slideIn forwards .5s ease;
+  margin-right: -2rem;
+  padding: .4rem 2rem .4rem .6rem;
+}
+
+.chapter-header-nav-open .chapter-header-nav a {
+  animation: slideIn forwards .3s ease;
 }
 
 @keyframes slideIn {
@@ -266,23 +297,13 @@ blockquote:before {
   }
 }
 
-.chapter-header-nav {
-  padding: .25rem 0 .25rem;
-  margin-bottom: .25rem;
-}
-
 .chapter-nav-close {
   padding: 0 0 .25rem 1rem;
+  margin-bottom: 1rem;
 }
 
 .chapter-header a {
   text-decoration: none;
-}
-
-@media (max-width: 900px) {
-  .chapter-header {
-    padding: .5rem;
-  }
 }
 
 .chapter-no {
@@ -310,6 +331,7 @@ h1 a {
   justify-content: center;
   text-align: center;
   position: relative;
+  padding: 7rem 0 5rem;
 }
 
 .slide.invert {
@@ -317,7 +339,7 @@ h1 a {
 }
 
 .slide__content {
-  padding: 5rem 2rem;
+  padding: 0 2rem;
   width: 100%;
   max-width: 1400px;
   position: relative;
@@ -390,7 +412,7 @@ h1 a {
 
 .slide__content img {
   width: 100%;
-  max-width: 900px;
+  max-width: 800px;
 }
 
 .slide__textandimage {
@@ -617,6 +639,7 @@ input[type="text"]:focus, input[type="text"]:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 9000;
 }
 
 .arrow-text {
@@ -787,15 +810,23 @@ input[type="text"]:focus, input[type="text"]:hover {
 }
 .poll-options {
   display: flex;
-  width: auto;
+  width: 100%;
   max-width: 54rem;
   justify-content: center;
   margin: 0 auto 2rem;
+  transition: padding-top 1s ease;
+}
+.poll-options-has-lines {
+  transition: padding-top 1s ease;
+  padding-top: 8rem;
 }
 .poll-option-label {
   line-height: 3rem;
   margin: 0 1rem;
   width: 3.6rem;
+}
+.poll-option-column {
+  position: relative;
 }
 .poll-option-buttons {
   display: flex;
@@ -809,7 +840,7 @@ input[type="text"]:focus, input[type="text"]:hover {
   left: 1.5rem;
   right: 1.5rem;
   height: .3rem;
-  background: #000;
+  background: #E269A3;
   z-index: 0;
   transform: translateY(-50%);
 }
@@ -840,15 +871,36 @@ input[type="text"]:focus, input[type="text"]:hover {
   position: relative;
 }
 .poll-line {
-  width: .3rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1rem;
   display: inline-block;
-  background: black;
+  background: #76C2AF;
   transition: height 1s ease-in;
   animation: grow 1s forwards;
+  margin-bottom: -.2rem;
+}
+.poll-percent {
+  position: absolute;
+  top: 3.6rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 @keyframes grow {
   from {
     height: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .poll-option-button {
+    width: 2.2rem;
+    height: 2.2rem;
+    padding: .6rem;
+  }
+  .poll-option-buttons__line {
+    transform: translateY(-100%);
   }
 }
 
@@ -1026,6 +1078,10 @@ input[type="text"]:focus, input[type="text"]:hover {
 }
 
 @media (max-width: 800px) {
+  .site-header {
+    background: none;
+    padding-top: 1rem;
+  }
   h1 {
     font-size: 2.2rem;
     text-align: left;
@@ -1034,7 +1090,34 @@ input[type="text"]:focus, input[type="text"]:hover {
     font-size: 1.8rem;
   }
   .chapter-header {
-    font-size: 12px;
+    font-size: 14px;
+    padding: .5rem;
+  }
+  .chapter-header-nav-closed {
+    background: #000;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .chapter-header-nav-open {
+    background: #000;
+    height: 100%;
+    width: 100%;
+  }
+  .chapter-header-nav a {
+    display: block;
+    padding: .8rem 1.2rem .8rem 0;
+    margin-bottom: .2rem;
+    text-align: left;
+  }
+  .chapter-header-nav-open .chapter-header-nav {
+    border-bottom: 1px solid #fff;
+    margin-left: 2rem;
+    margin-right: -.5rem;
+  }
+  .chapter-header-title {
+    display: none;
   }
   .slide {
     padding: 8rem 0 1rem;
@@ -1077,6 +1160,16 @@ input[type="text"]:focus, input[type="text"]:hover {
   }
   .arrow-text {
     font-size: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  blockquote {
+    display: block;
+    padding: 0 1.2rem;
+  }
+  blockquote:before {
+    left: -.5rem;
   }
 }
 

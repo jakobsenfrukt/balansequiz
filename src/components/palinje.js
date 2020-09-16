@@ -93,7 +93,7 @@ const PaLinje = ({ data }) => {
                           distribution.filter(x => x.agreement === option)[0] ||
                           null
                         const pct = thisDistribution && thisDistribution.percent
-                        const lineLength = pct / 5
+                        const lineLength = pct / 6
                         const lineStyle = {
                           height: `${lineLength}rem`,
                         }

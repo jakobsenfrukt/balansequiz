@@ -41,7 +41,7 @@ const ChapterHeader = ({ currentIndex, currentTitle }) => {
               }`}
               key={index}
             >
-              <Link to={chapter.path} style={{ animationDelay: `${index/10}s` }}>
+              <Link to={chapter.path}>
                 {index !== 0 && (
                   <>Del {convertToRoman(index)}: </>
                 )}
@@ -55,10 +55,13 @@ const ChapterHeader = ({ currentIndex, currentTitle }) => {
           className="chapter-header-current"
           {...buttonize(() => toggleMenu())}
         >
-          {currentIndex !== 0 && (
-            <>Del {convertToRoman(currentIndex)}: </>
-          )}
-          {currentTitle}
+          &#9776;
+          <span className="chapter-header-title">
+            {currentIndex !== 0 && (
+              <>Del {convertToRoman(currentIndex)}: </>
+            )}
+            {currentTitle}
+          </span>
         </div>
       )}
     </header>
