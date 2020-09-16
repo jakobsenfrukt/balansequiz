@@ -484,6 +484,7 @@ h1 a {
   margin: .5rem 0 .5rem auto;
   padding: 0 1rem;
   font-size: 14px;
+  text-align: right;
 }
 
 .slide__content h2 {
