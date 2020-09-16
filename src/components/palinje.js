@@ -82,7 +82,7 @@ const PaLinje = ({ data }) => {
             <div className="poll-option-buttons__line"></div>
             {options.map((option, index) => {
               return (
-                <div className="poll-option-column">
+                <div className="poll-option-column" key={index}>
                   {showLines && (
                     <div
                       className="poll-distribution"
@@ -102,11 +102,7 @@ const PaLinje = ({ data }) => {
                             <div className="poll-percent">
                               {pct ? `${pct}%` : ""}
                             </div>
-                            <div
-                              className="poll-line"
-                              key={index}
-                              style={lineStyle}
-                            ></div>
+                            <div className="poll-line" style={lineStyle}></div>
                           </>
                         )
                       })()}
@@ -114,7 +110,6 @@ const PaLinje = ({ data }) => {
                   )}
                   <div
                     className="poll-option-button"
-                    key={index}
                     {...buttonize(() => makeChoice(assertion.id, option))}
                   >
                     {option}
