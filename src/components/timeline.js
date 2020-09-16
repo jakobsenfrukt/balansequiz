@@ -15,13 +15,22 @@ const Timeline = ({ data }) => {
   const task = tasks[currentTask]
   const hasFact = task.furtherInformation && task.furtherInformation.content
 
+  const feedbackMessages = ["Niks!", "Prøv igjen!"]
+  let messageCounter = 1;
+
   const makeChoice = choice => {
     const correct = choice === tasks[currentTask].year
     if (correct) {
       setUsedChoices(usedChoices.concat([choice]))
       setShowFact(true)
     } else {
-      setFeedback("Niks!")
+      setFeedback(feedbackMessages[messageCounter])
+      if (messageCounter === messageCounter.length) {
+        messageCounter = 0
+      } else {
+        messageCounter++
+      }
+      console.log(messageCounter, feedbackMessages[messageCounter])
     }
   }
 
@@ -43,6 +52,9 @@ const Timeline = ({ data }) => {
     <section className="slide">
       <h2 className="timeline-heading">{title}</h2>
       <div className="timeline-statement">{task.toBePlaced}</div>
+      {feedback && (
+        <div className="timeline-feedback-wrong">Niks!</div>
+      )}
       <p className="information">Dra eller scroll for å se hele &rarr;</p>
       <ScrollContainer
         className="scroll-container timeline-wrapper"
@@ -68,9 +80,6 @@ const Timeline = ({ data }) => {
           </div>
         </div>
       </ScrollContainer>
-      {feedback && (
-        <div className="timeline-feedback-wrong">Niks!</div>
-      )}
       {showFact && (
         <div className="timeline-feedback">
           <p className="timeline-feedback__message">Riktig!</p>

@@ -796,6 +796,31 @@ input[type="text"]:focus, input[type="text"]:hover {
   color: #000;
 }
 
+.timeline-feedback-wrong {
+  position: absolute;
+  color: #e73636;
+  font-size: 1.5rem;
+  font-weight: 900;
+  border-radius: 2rem;
+  padding: 1.2rem 2rem;
+  animation: fadeDown 3s ease-in-out forwards;
+}
+
+@keyframes fadeDown {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 
 /* på linje */
 .statement-heading {
