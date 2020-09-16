@@ -6,6 +6,7 @@ const Quiz = ({ data }) => {
   const [currentTask, setCurrentTask] = useState(0)
   const [correctAnswers, setCorrectAnswers] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState(null)
+  const [completedTasks, setCompletedTasks] = useState([])
   const [complete, setComplete] = useState(false)
   const [showCorrectAnswers, setShowCorrectAnswers] = useState(false)
 
@@ -16,12 +17,15 @@ const Quiz = ({ data }) => {
   const isCorrect = choice => choice === tasks[currentTask].rightAnswer
 
   const makeChoice = choice => {
+    if (completedTasks.includes(currentTask)) {
+      return
+    }
+    setCompletedTasks([currentTask, ...completedTasks])
     if (isCorrect(choice)) {
       setCorrectAnswers(correctAnswers + 1)
     }
     setSelectedAnswer(choice)
     setShowCorrectAnswers(true)
-    setTimeout(nextTask, 1800)
   }
 
   const buttonClasses = choice => {
@@ -44,8 +48,10 @@ const Quiz = ({ data }) => {
   }
 
   const reset = () => {
+    setSelectedAnswer(null)
     setCurrentTask(0)
     setCorrectAnswers(0)
+    setCompletedTasks([])
     setComplete(false)
   }
 
@@ -104,6 +110,14 @@ const Quiz = ({ data }) => {
           {task.answerC}
         </li>
       </ol>
+      {selectedAnswer !== null && (
+        <div
+          className="quiz-next-button button"
+          {...buttonize(() => nextTask())}
+        >
+          {currentTask === tasks.length - 1 ? "Se resultat" : "Neste oppgave"}
+        </div>
+      )}
     </section>
   )
 }
