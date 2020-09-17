@@ -8,6 +8,7 @@ const Timeline = ({ data }) => {
   const [complete, setComplete] = useState(false)
   const [usedChoices, setUsedChoices] = useState([])
   const [feedback, setFeedback] = useState("")
+  const [feedbackCount, setFeedbackCount] = useState(0)
 
   const { title, tasks } = data
   const possibleChoices = tasks.map(x => x.year)
@@ -16,7 +17,6 @@ const Timeline = ({ data }) => {
   const hasFact = task.furtherInformation && task.furtherInformation.content
 
   const feedbackMessages = ["Niks!", "Prøv igjen!"]
-  let messageCounter = 1;
 
   const makeChoice = choice => {
     const correct = choice === tasks[currentTask].year
@@ -24,13 +24,8 @@ const Timeline = ({ data }) => {
       setUsedChoices(usedChoices.concat([choice]))
       setShowFact(true)
     } else {
-      setFeedback(feedbackMessages[messageCounter])
-      if (messageCounter === messageCounter.length) {
-        messageCounter = 0
-      } else {
-        messageCounter++
-      }
-      console.log(messageCounter, feedbackMessages[messageCounter])
+      setFeedback(feedbackMessages[feedbackCount % feedbackMessages.length])
+      setFeedbackCount(feedbackCount + 1)
     }
   }
 
@@ -52,9 +47,7 @@ const Timeline = ({ data }) => {
     <section className="slide">
       <h2 className="timeline-heading">{title}</h2>
       <div className="timeline-statement">{task.toBePlaced}</div>
-      {feedback && (
-        <div className="timeline-feedback-wrong">Niks!</div>
-      )}
+      {feedback && <div className="timeline-feedback-wrong">{feedback}</div>}
       <p className="information">Dra eller scroll for å se hele &rarr;</p>
       <ScrollContainer
         className="scroll-container timeline-wrapper"
@@ -91,7 +84,10 @@ const Timeline = ({ data }) => {
               }}
             />
           )}
-          <div className="button button--timeline-right-answer" {...buttonize(nextTask)}>
+          <div
+            className="button button--timeline-right-answer"
+            {...buttonize(nextTask)}
+          >
             Neste oppgave &rarr;
           </div>
         </div>
