@@ -76,7 +76,7 @@ const PaLinje = ({ data }) => {
             showLines ? "poll-options-has-lines" : ""
           }`}
         >
-          <div className="poll-option-label">Uenig</div>
+          <div className="poll-option-label poll-option-label--disagree">Uenig</div>
 
           <div className="poll-option-buttons">
             <div className="poll-option-buttons__line"></div>
@@ -118,7 +118,7 @@ const PaLinje = ({ data }) => {
               )
             })}
           </div>
-          <div className="poll-option-label">Enig</div>
+          <div className="poll-option-label poll-option-label--agree">Enig</div>
         </div>
         {/* !showLines && (
           <div

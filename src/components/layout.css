@@ -572,11 +572,8 @@ h1 a {
     margin-bottom: 2rem;
   }
   .column--image img {
-    max-width: none;
-    width: auto;
     display: block;
     margin: 0 auto;
-    max-height: 50vh;
   }
   
   .slide__textandimage__left,
@@ -858,16 +855,20 @@ input[type="text"]:focus, input[type="text"]:hover {
   max-width: 54rem;
   justify-content: center;
   margin: 0 auto 2rem;
+  padding-top: 0px;
   transition: padding-top 1s ease;
 }
 .poll-options-has-lines {
   transition: padding-top 1s ease;
-  padding-top: 8rem;
+  padding-top: 120px;
 }
 .poll-option-label {
   line-height: 3rem;
   margin: 0 1rem;
   width: 3.6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 .poll-option-column {
   position: relative;
@@ -938,6 +939,9 @@ input[type="text"]:focus, input[type="text"]:hover {
 }
 
 @media (max-width: 700px) {
+  .poll-options {
+    position: relative;
+  }
   .poll-option-button {
     width: 2.2rem;
     height: 2.2rem;
@@ -945,6 +949,19 @@ input[type="text"]:focus, input[type="text"]:hover {
   }
   .poll-option-buttons__line {
     transform: translateY(-100%);
+  }
+  .poll-option-label {
+    position: absolute;
+    bottom: -5rem;
+  }
+  .poll-option-label--agree {
+    right: 0;
+  }
+  .poll-option-label--disagree {
+    left: 0;
+  }
+  .poll-percent {
+    top: 3rem;
   }
 }
 
@@ -1026,7 +1043,7 @@ input[type="text"]:focus, input[type="text"]:hover {
   width: 90%;
   max-width: 36rem;
   padding: 0;
-  margin: 0 auto 2rem;
+  margin: 0 auto;
   counter-reset: quiz-option-counter;
   list-style: none;
 }
@@ -1079,6 +1096,11 @@ input[type="text"]:focus, input[type="text"]:hover {
 
 .quiz-option-selected.quiz-option-incorrect {
   background: #f78d8d;
+}
+.quiz-next-button {
+  width: 90%;
+  max-width: 36rem;
+  margin-top: 0;
 }
 
 @media (max-width: 800px) {
