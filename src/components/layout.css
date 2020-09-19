@@ -741,11 +741,12 @@ input[type="text"]:focus, input[type="text"]:hover {
 }
 
 .timeline-fact {
-  width: 80%;
+  width: 100%;
   max-width: 38rem;
   margin-bottom: 0;
   align-self: flex-end;
   text-align: left;
+  overflow-y: auto;
 }
 .timeline-fact p {
   width: 100%;
@@ -789,11 +790,21 @@ input[type="text"]:focus, input[type="text"]:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #fff;
+  padding: 2rem;
+  z-index: 9001;
+  background: rgba(15, 65, 56, .5);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.timeline-feedback__wrapper {
+  background: #fff;
+  padding: 3rem 2rem;
+  margin: 2rem;
+  border-radius: 2rem;
+  animation: fadeDown forwards 2s ease-in-out;
 }
 
 .timeline-feedback__message {
@@ -961,6 +972,17 @@ input[type="text"]:focus, input[type="text"]:hover {
   }
   .poll-percent {
     top: 3rem;
+  }
+  .timeline-feedback {
+    padding: .5rem;
+  }
+  
+  .timeline-feedback__wrapper {
+    padding: 3rem 2rem;
+    margin: .5rem;
+  }
+  .button--timeline-right-answer {
+    width: 100%;
   }
 }
 

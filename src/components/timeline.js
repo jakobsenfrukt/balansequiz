@@ -75,20 +75,22 @@ const Timeline = ({ data }) => {
       </ScrollContainer>
       {showFact && (
         <div className="timeline-feedback">
-          <p className="timeline-feedback__message">Riktig!</p>
-          {hasFact && (
-            <p
-              className="timeline-fact"
-              dangerouslySetInnerHTML={{
-                __html: task.furtherInformation.content,
-              }}
-            />
-          )}
-          <div
-            className="button button--timeline-right-answer"
-            {...buttonize(nextTask)}
-          >
-            Neste oppgave &rarr;
+          <div className="timeline-feedback__wrapper">
+            <p className="timeline-feedback__message">Riktig!</p>
+            {hasFact && (
+              <p
+                className="timeline-fact"
+                dangerouslySetInnerHTML={{
+                  __html: task.furtherInformation.content,
+                }}
+              />
+            )}
+            <div
+              className="button button--timeline-right-answer"
+              {...buttonize(nextTask)}
+            >
+              Neste oppgave &rarr;
+            </div>
           </div>
         </div>
       )}
