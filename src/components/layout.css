@@ -991,7 +991,7 @@ input[type="text"]:focus, input[type="text"]:hover {
   width: 90%;
   max-width: 54rem;
   justify-content: center;
-  margin: 0 auto 2rem;
+  margin: 0 auto 1rem;
 }
 .risk-option-button {
   background: #76C2AF;
@@ -1015,7 +1015,7 @@ input[type="text"]:focus, input[type="text"]:hover {
 }
 .risk-measures {
   width: 90%;
-  max-width: 1200px;
+  max-width: 48rem;
   display: flex;
   padding: 2rem;
   text-align: left;
@@ -1025,7 +1025,7 @@ input[type="text"]:focus, input[type="text"]:hover {
 .risk-measures p {
   max-width: none;
   margin: 0;
-  width: 90%;
+  width: 100%;
 }
 
 /* quiz */
@@ -1129,6 +1129,16 @@ input[type="text"]:focus, input[type="text"]:hover {
   .risk-option-button {
     width: 100%;
     margin: 0 0 .8rem;
+  }
+  .risk-measures {
+    width: 90%;
+    max-width: 30rem;
+    display: block;
+    padding: 2rem;
+    text-align: left;
+  }
+  .risk-measures h3 {
+    margin-bottom: .5rem;
   }
 }
 
