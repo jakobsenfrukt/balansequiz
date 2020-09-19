@@ -331,7 +331,7 @@ h1 a {
   justify-content: center;
   text-align: center;
   position: relative;
-  padding: 7rem 0 5rem;
+  padding: 7rem 0;
 }
 
 .slide.invert {
@@ -423,10 +423,12 @@ h1 a {
 
 .slide__textandimage .column {
   padding: 0 2rem;
+  width: 60%;
 }
 
 .slide__textandimage .column.column--image {
   padding: 0;
+  width: 40%;
 }
 
 .slide__textandimage__left,
@@ -491,7 +493,6 @@ h1 a {
   font-size: 3rem;
   display: block;
   font-weight: 900;
-  line-height: 1;
   margin-bottom: 1rem;
 }
 
@@ -515,6 +516,13 @@ h1 a {
 .slide.bgcolor .big-text,
 .slide--chapter-front h1 {
   color: inherit !important;
+}
+
+.slide--chapter-front--lead {
+  font-size: 1.2rem;
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto 2rem;
 }
 
 .slide__content figure {
@@ -553,10 +561,22 @@ h1 a {
 @media (max-width: 800px) {
   .slide__textandimage .column {
     padding: 0;
+    width: 100%;
+    order: 2;
   }
   
   .slide__textandimage .column.column--image {
     padding: 0;
+    width: 100%;
+    order: 1;
+    margin-bottom: 2rem;
+  }
+  .column--image img {
+    max-width: none;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    max-height: 50vh;
   }
   
   .slide__textandimage__left,
@@ -583,13 +603,11 @@ h1 a {
     height: auto;
   }
   
-  .slide__textandimage__above .column--image,
-  .slide__textandimage__left .column--image {
+  .slide__textandimage__above .column--image {
     order: 1;
   }
   
-  .slide__textandimage__above .column--text,
-  .slide__textandimage__left .column--text {
+  .slide__textandimage__above .column--text {
     order: 2;
   }
 }
@@ -799,7 +817,7 @@ input[type="text"]:focus, input[type="text"]:hover {
 
 .timeline-feedback-wrong {
   position: absolute;
-  color: #e73636;
+  color: #E269A3;
   font-size: 1.5rem;
   font-weight: 900;
   border-radius: 2rem;
@@ -1082,6 +1100,14 @@ input[type="text"]:focus, input[type="text"]:hover {
   .risk-description {
     font-size: 1rem;
   }
+  .risk-options {
+    flex-direction: column;
+    max-width: 30rem;
+  }
+  .risk-option-button {
+    width: 100%;
+    margin: 0 0 .8rem;
+  }
 }
 
 
@@ -1146,17 +1172,19 @@ input[type="text"]:focus, input[type="text"]:hover {
     display: none;
   }
   .slide {
-    padding: 8rem 0 1rem;
-    align-items: flex-start;
-    justify-content: flex-start;
+    padding: 5rem 0;
   }
   .slide--chapter-front h1 {
     text-align: center;
   }
   .slide__content,
-  .slide__content.split,
-  .slide__textandimage {
+  .slide__content.split {
     display: block;
+    padding: 0 2rem;
+  }
+  .slide__textandimage {
+    display: flex;
+    flex-wrap: wrap;
     padding: 0 2rem;
   }
   .column {
