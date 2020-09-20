@@ -34,12 +34,13 @@ steps:
   environment:
     RSYNC_KEY:
       from_secret: balanse_ssh_key
-  user: balanse
-  hosts:
-    - banana.444.no
-  source: ./public
-  target: ~/www/kurs.balansemerket.no/public
-  secrets: [ "balanse_ssh_key" ]
+  settings:
+    user: balanse
+    hosts:
+      - banana.444.no
+    source: ./public
+    target: ~/www/kurs.balansemerket.no/public
+    secrets: [ "balanse_ssh_key" ]
 
 volumes:
 - name: cache
