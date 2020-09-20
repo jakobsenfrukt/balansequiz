@@ -58,6 +58,10 @@ const PaLinje = ({ data }) => {
   }
 
   const makeChoice = (statementId, choice) => {
+    if (distributions.hasOwnProperty(statementId)) {
+      // Result is known or visitor has voted before
+      return
+    }
     sendChoice(statementId, choice)
   }
 
