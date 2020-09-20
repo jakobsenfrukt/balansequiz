@@ -11,7 +11,7 @@ const Timeline = ({ data }) => {
   const [feedbackCount, setFeedbackCount] = useState(0)
 
   const { title, tasks } = data
-  const possibleChoices = tasks.map(x => x.year)
+  const possibleChoices = tasks.map(x => x.year).sort()
 
   const task = tasks[currentTask]
   const hasFact = task.furtherInformation && task.furtherInformation.content
