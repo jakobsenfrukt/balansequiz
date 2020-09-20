@@ -271,6 +271,7 @@ export const chapterQuery = graphql`
             risks: riskFactors {
               __typename
               ... on Balanse_RiskFactorsRiskFactor {
+                id
                 riskTitle
                 description
                 measures {
