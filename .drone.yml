@@ -38,8 +38,8 @@ steps:
     user: balanse
     hosts:
       - banana.444.no
-    source: ./public
-    target: ~/www/kurs.balansemerket.no/public
+    source: ./public/
+    target: ~/www/kurs.balansemerket.no/public/
     secrets: [ "balanse_ssh_key" ]
 
 volumes:
