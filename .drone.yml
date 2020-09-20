@@ -10,8 +10,8 @@ steps:
     mount:
       - ./node_modules
   volumes:
-  - name: cache
-    path: /cache
+    - name: cache
+      path: /cache
 
 - name: build
   image: node:14.11
@@ -26,8 +26,20 @@ steps:
     mount:
       - ./node_modules
   volumes:
-  - name: cache
-    path: /cache
+    - name: cache
+      path: /cache
+
+- name: deploy
+  image: drillster/drone-rsync
+  environment:
+    RSYNC_KEY:
+      from_secret: balanse_ssh_key
+  user: balanse
+  hosts:
+    - banana.444.no
+  source: ./public
+  target: ~/www/kurs.balansemerket.no/public
+  secrets: [ "balanse_ssh_key" ]
 
 volumes:
 - name: cache
