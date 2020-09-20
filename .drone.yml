@@ -3,8 +3,33 @@ type: docker
 name: default
 
 steps:
+- name: restore-cache
+  image: drillster/drone-volume-cache
+  settings:
+    restore: true
+    mount:
+      - ./node_modules
+  volumes:
+  - name: cache
+    path: /cache
+
 - name: build
   image: node:14.11
   commands:
     - npm install
     - npm run build
+
+- name: rebuild-cache
+  image: drillster/drone-volume-cache
+  settings:
+    rebuild: true
+    mount:
+      - ./node_modules
+  volumes:
+  - name: cache
+    path: /cache
+
+volumes:
+- name: cache
+  host:
+    path: /tmp/drone/cache
