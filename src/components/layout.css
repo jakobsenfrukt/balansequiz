@@ -712,6 +712,11 @@ input[type="text"]:focus, input[type="text"]:hover {
   */
 }
 
+/* https://github.com/Norserium/react-indiana-drag-scroll/issues/26 */
+.indiana-scroll-container--hide-scrollbars {
+  overflow: auto !important;
+}
+
 /*
 .timeline-scroll {
   width: 100%;
