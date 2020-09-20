@@ -251,7 +251,7 @@ export const chapterQuery = graphql`
           id
           ... on Balanse_KursQuiz {
             title
-            tasks: quiz {
+            fields: quiz {
               __typename
               ... on Balanse_QuizQuizTask {
                 question
@@ -259,6 +259,10 @@ export const chapterQuery = graphql`
                 answerB
                 answerC
                 rightAnswer
+              }
+              ... on Balanse_QuizQuizFeedback {
+                correctGte
+                feedback
               }
             }
           }

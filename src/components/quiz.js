@@ -10,7 +10,11 @@ const Quiz = ({ data }) => {
   const [complete, setComplete] = useState(false)
   const [showCorrectAnswers, setShowCorrectAnswers] = useState(false)
 
-  const { tasks } = data
+  const { fields } = data
+  const tasks = fields.filter(x => x.__typename === "Balanse_QuizQuizTask")
+  const feedbacks = fields
+    .filter(x => x.__typename === "Balanse_QuizQuizFeedback")
+    .sort((a, b) => (a.correctGte < b.correctGte ? 1 : -1))
 
   const task = tasks[currentTask]
 
@@ -57,15 +61,11 @@ const Quiz = ({ data }) => {
 
   if (complete) {
     let feedback = ""
-    if (correctAnswers === tasks.length) {
-      feedback =
-        "Juhu! Alt riktig! Med ditt kunnskapsnivå kan du være en ressurs for andre. Hjelp oss å spre kunnskap og øke bevisstheten om seksuell trakassering, makt og grenser."
-    } else if (correctAnswers >= 4) {
-      feedback =
-        "Ser man det! Du har koll på tematikken seksuell trakassering, makt og grenser."
-    } else {
-      feedback =
-        "Ops! Her er det noen kunnskapshull. Kanskje du har tid til å se igjennom e-kurset på nytt en annen dag?"
+    for (const f of feedbacks) {
+      if (correctAnswers >= f.correctGte) {
+        feedback = f.feedback
+        break
+      }
     }
 
     return (
