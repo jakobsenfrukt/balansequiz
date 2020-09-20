@@ -16,7 +16,7 @@ steps:
 - name: build
   image: node:14.11
   commands:
-    - npm install
+    - npm install --no-audit --progress=false
     - npm run build
 
 - name: rebuild-cache
