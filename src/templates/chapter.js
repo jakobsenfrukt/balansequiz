@@ -35,14 +35,12 @@ const ChapterHeader = ({ currentIndex, currentTitle }) => {
           return (
             <div
               className={`chapter-header-nav ${
-                currentIndex === index
-                  ? "chapter-header-nav-current"
-                  : ""
+                currentIndex === index ? "chapter-header-nav-current" : ""
               }`}
               key={index}
             >
               <Link to={chapter.path}>
-                {index !== 0 && (
+                {index !== 0 && index !== chapters.length - 1 && (
                   <>Del {convertToRoman(index)}: </>
                 )}
                 {chapter.title}
@@ -57,7 +55,7 @@ const ChapterHeader = ({ currentIndex, currentTitle }) => {
         >
           &#9776;
           <span className="chapter-header-title">
-            {currentIndex !== 0 && (
+            {currentIndex !== 0 && currentIndex !== chapters.length - 1 && (
               <>Del {convertToRoman(currentIndex)}: </>
             )}
             {currentTitle}
