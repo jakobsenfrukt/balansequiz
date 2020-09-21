@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Balansemerket: Kurs & quiz`,
     description: `Balansemerket er en merkeordning mot seksuell trakassering i kulturlivet. Vi tilbyr kursing, veiledning og verktøy for å bistå kunst- og kulturvirksomheter i deres arbeid for et trygt og inkluderende arbeidsmiljø.`,
-    balanseDataApiUrl: "https://balansemerket.no/kurs-api",
+    balanseDataApiUrl: "https://kurs.balansemerket.no/api",
   },
   plugins: [
     {
