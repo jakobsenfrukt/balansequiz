@@ -106,6 +106,8 @@ const ChapterPage = ({ data, pageContext, navigate }) => {
   const { chapter } = data.balanse
   const {
     title,
+    socialTitle,
+    socialDescription,
     slug,
     slides,
     timelines,
@@ -128,7 +130,7 @@ const ChapterPage = ({ data, pageContext, navigate }) => {
 
   return (
     <Layout>
-      <SEO title={title} />
+      <SEO title={socialTitle || title} description={socialDescription} />
       <ChapterTemplate
         title={title}
         slug={slug}
@@ -161,6 +163,8 @@ export const chapterQuery = graphql`
         ... on Balanse_KursKurskapittel {
           title
           slug
+          socialTitle
+          socialDescription
           slides: slide {
             __typename
             ... on Balanse_SlideKapittelforside {
