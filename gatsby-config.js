@@ -39,6 +39,17 @@ module.exports = {
         icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: 'gatsby-plugin-matomo',
+      options: {
+        siteId: '6',
+        matomoUrl: '//a.444.no',
+        siteUrl: 'https://kurs.balansemerket.no',
+        matomoJsScript: 'js/',
+        disableCookies: true,
+        dev: false, // set to true to test tracking in develop
+      }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
