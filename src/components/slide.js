@@ -26,7 +26,7 @@ const Slide = ({ data, index }) => {
           )}
           <h1>{title}</h1>
           {lead && <div className="slide--chapter-front--lead">{lead}</div>}
-          {imageUrl && <img src={imageUrl} alt="" />}
+          {imageUrl && <img src={imageUrl} alt={images[0].title || ""} />}
         </div>
       </section>
     )
@@ -108,7 +108,7 @@ const Slide = ({ data, index }) => {
             dangerouslySetInnerHTML={{ __html: text.content }}
           />
           <div className="column column--image">
-            {imageUrl && <img src={imageUrl} alt="" />}
+            {imageUrl && <img src={imageUrl} alt={image[0].title || ""} />}
           </div>
         </div>
         {citations && (

@@ -173,6 +173,7 @@ export const chapterQuery = graphql`
               images {
                 id
                 url
+                title
               }
             }
             ... on Balanse_SlideEnKolonne {
@@ -222,6 +223,7 @@ export const chapterQuery = graphql`
               image {
                 id
                 url
+                title
               }
               imagePlacement
               citations {
