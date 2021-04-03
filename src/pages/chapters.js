@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import Layout from "../components/layout"
 import { useChapterData } from "../hooks/use-chapter-data"
 
@@ -9,7 +9,7 @@ const TableOfContents = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Kapitler" />
+      <Seo title="Kapitler" />
       <section className="slide">
         <div className="slide__content">
           <h1>Kapitler</h1>

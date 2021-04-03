@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { graphql, Link } from "gatsby"
 import { convertToRoman, buttonize } from "../utils"
 import { useChapterData } from "../hooks/use-chapter-data"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import Layout from "../components/layout"
 import Slide from "../components/slide"
 import Timeline from "../components/timeline"
@@ -66,7 +66,7 @@ const ChapterHeader = ({ currentIndex, currentTitle }) => {
   )
 }
 
-export const ChapterTemplate = ({
+const ChapterTemplate = ({
   title,
   slug,
   index,
@@ -130,7 +130,7 @@ const ChapterPage = ({ data, pageContext, navigate }) => {
 
   return (
     <Layout>
-      <SEO title={socialTitle || title} description={socialDescription} />
+      <Seo title={socialTitle || title} description={socialDescription} />
       <ChapterTemplate
         title={title}
         slug={slug}
