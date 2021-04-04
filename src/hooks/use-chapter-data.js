@@ -6,9 +6,8 @@ export const useChapterData = () => {
       query {
         balanse {
           chapters: entries(
-            section: [kurs]
-            type: [KursKurskapittel]
-            status: "live"
+            section: ["kurs"]
+            type: ["Kurskapittel"]
           ) {
             __typename
             id

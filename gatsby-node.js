@@ -9,11 +9,10 @@ exports.createPages = ({ actions, graphql }) => {
   return graphql(`
     query {
       balanse {
-        chapters: entries(section: [kurs], type: [KursKurskapittel]) {
+        chapters: entries(section: ["kurs"], type: ["Kurskapittel"]) {
           __typename
           id
           slug
-          status
         }
       }
     }
@@ -37,7 +36,7 @@ exports.createPages = ({ actions, graphql }) => {
       if (chapter.slug === "intro") {
         path = "/"
       }
-      console.log("creating page", path, 'from slug', chapter.slug)
+      console.log("creating page", path, "from slug", chapter.slug)
 
       createPage({
         path: path,

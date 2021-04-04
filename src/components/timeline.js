@@ -14,7 +14,6 @@ const Timeline = ({ data }) => {
   const possibleChoices = tasks.map(x => x.year).sort()
 
   const task = tasks[currentTask]
-  const hasFact = task.furtherInformation && task.furtherInformation.content
 
   const feedbackMessages = ["Niks!", "Prøv igjen!"]
 
@@ -77,11 +76,11 @@ const Timeline = ({ data }) => {
         <div className="timeline-feedback">
           <div className="timeline-feedback__wrapper">
             <p className="timeline-feedback__message">Riktig!</p>
-            {hasFact && (
+            {task.furtherInformation && (
               <p
                 className="timeline-fact"
                 dangerouslySetInnerHTML={{
-                  __html: task.furtherInformation.content,
+                  __html: task.furtherInformation,
                 }}
               />
             )}

@@ -11,9 +11,6 @@ module.exports = {
         typeName: "Balanse",
         fieldName: "balanse",
         url: "https://balansemerket.no/craft/api",
-        headers: {
-          Authorization: `Bearer DLxomPNNuYLVfh8RXClON9NJwTo0VJpP2kYRzq24qVEmBZwaXsWGxmTJw_gRWST9`,
-        },
         fetchOptions: {},
       },
     },

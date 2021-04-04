@@ -37,7 +37,7 @@ const Risk = ({ title, description, measures }) => {
       {showMeasures && (
         <div className="risk-measures">
           <h3>Anbefalte tiltak</h3>
-          <p dangerouslySetInnerHTML={{ __html: measures.content }} />
+          <p dangerouslySetInnerHTML={{ __html: measures }} />
         </div>
       )}
       {currentChoice === 0 && <h3>&hearts;</h3>}

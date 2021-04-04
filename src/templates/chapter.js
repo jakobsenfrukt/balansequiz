@@ -110,11 +110,7 @@ const ChapterPage = ({ data, pageContext, navigate }) => {
     socialDescription,
     slug,
     slides,
-    timelines,
-    quizzes,
-    riskFactors,
-    paLinjes,
-    registerForms,
+    specials,
   } = chapter
 
   const registerFormOnSend = () => {
@@ -122,11 +118,19 @@ const ChapterPage = ({ data, pageContext, navigate }) => {
   }
 
   // Limit to one fancy section per chapter for now
-  const timeline = timelines.length !== 0 ? timelines[0] : null
-  const quiz = quizzes.length !== 0 ? quizzes[0] : null
-  const risks = riskFactors.length !== 0 ? riskFactors[0] : null
-  const paLinje = paLinjes.length !== 0 ? paLinjes[0] : null
-  const registerForm = registerForms.length !== 0 ? registerForms[0] : null
+  const timeline = specials.find(
+    x => x.__typename === "Balanse_kurs_tidslinjeoppgave_Entry"
+  )
+  const quiz = specials.find(x => x.__typename === "Balanse_kurs_quiz_Entry")
+  const risks = specials.find(
+    x => x.__typename === "Balanse_kurs_risikofaktorer_Entry"
+  )
+  const paLinje = specials.find(
+    x => x.__typename === "Balanse_kurs_paLinje_Entry"
+  )
+  const registerForm = specials.find(
+    x => x.__typename === "Balanse_kurs_register_Entry"
+  )
 
   return (
     <Layout>
@@ -154,20 +158,21 @@ ChapterPage.propTypes = {
 export default ChapterPage
 
 export const chapterQuery = graphql`
-  query ChapterById($id: Int!) {
+  query ChapterById($id: Balanse_QueryArgument!) {
     balanse {
       chapter: entry(id: [$id]) {
         id
         title
         slug
-        ... on Balanse_KursKurskapittel {
+        ... on Balanse_kurs_kurskapittel_Entry {
           title
           slug
           socialTitle
           socialDescription
           slides: slide {
             __typename
-            ... on Balanse_SlideKapittelforside {
+
+            ... on Balanse_slide_kapittelforside_BlockType {
               chapterTitle
               lead
               images {
@@ -176,141 +181,111 @@ export const chapterQuery = graphql`
                 title
               }
             }
-            ... on Balanse_SlideEnKolonne {
-              backgroundColor {
-                hex
-              }
-              text {
-                content
-              }
-              citations {
-                content
-              }
+
+            ... on Balanse_slide_enKolonne_BlockType {
+              backgroundColor
+              text
+              citations
             }
-            ... on Balanse_SlideToKolonner {
-              backgroundColor {
-                hex
-              }
-              left {
-                content
-              }
-              right {
-                content
-              }
-              citations {
-                content
-              }
+
+            ... on Balanse_slide_toKolonner_BlockType {
+              backgroundColor
+              left
+              right
+              citations
             }
-            ... on Balanse_SlideSitat {
-              backgroundColor {
-                hex
-              }
+
+            ... on Balanse_slide_sitat_BlockType {
+              backgroundColor
               quote
-              quoteDescription {
-                content
-              }
-              citations {
-                content
-              }
+              quoteDescription
+              citations
             }
-            ... on Balanse_SlideTekstOgBilde {
-              backgroundColor {
-                hex
-              }
-              text {
-                content
-              }
+
+            ... on Balanse_slide_tekstOgBilde_BlockType {
+              backgroundColor
+              text
               image {
                 id
                 url
                 title
               }
               imagePlacement
-              citations {
-                content
-              }
+              citations
             }
           }
         }
-        timelines: children(type: [KursTidslinjeoppgave]) {
+        specials: children(
+          type: [
+            "tidslinjeoppgave"
+            "quiz"
+            "risikofaktorer"
+            "paLinje"
+            "register"
+          ]
+        ) {
           __typename
           id
-          ... on Balanse_KursTidslinjeoppgave {
+          ... on Balanse_kurs_tidslinjeoppgave_Entry {
             title
             tasks: timelineTask {
               __typename
-              ... on Balanse_TimelineTaskEvent {
+              ... on Balanse_timelineTask_event_BlockType {
                 id
                 toBePlaced
                 year
-                furtherInformation {
-                  content
-                }
+                furtherInformation
               }
             }
           }
-        }
-        quizzes: children(type: [KursQuiz]) {
-          __typename
-          id
-          ... on Balanse_KursQuiz {
+
+          ... on Balanse_kurs_quiz_Entry {
             title
             fields: quiz {
               __typename
-              ... on Balanse_QuizQuizTask {
+              ... on Balanse_quiz_quizTask_BlockType {
                 question
                 answerA
                 answerB
                 answerC
                 rightAnswer
               }
-              ... on Balanse_QuizQuizFeedback {
+              ... on Balanse_quiz_quizFeedback_BlockType {
                 correctGte
                 feedback
               }
             }
           }
-        }
-        riskFactors: children(type: [KursRisikofaktorer]) {
-          __typename
-          id
-          ... on Balanse_KursRisikofaktorer {
+
+          ... on Balanse_kurs_risikofaktorer_Entry {
             title
             risks: riskFactors {
               __typename
-              ... on Balanse_RiskFactorsRiskFactor {
+              ... on Balanse_riskFactors_riskFactor_BlockType {
                 id
                 riskTitle
                 description
-                measures {
-                  content
-                }
+                measures
               }
             }
           }
-        }
-        paLinjes: children(type: [KursPaLinje]) {
-          __typename
-          id
-          ... on Balanse_KursPaLinje {
+
+          ... on Balanse_kurs_paLinje_Entry {
             title
             assertions: paLinje {
               __typename
-              ... on Balanse_PaLinjeAssertion {
+              ... on Balanse_paLinje_assertion_BlockType {
                 id
                 text
               }
             }
           }
-        }
-        registerForms: children(type: [KursRegister]) {
-          __typename
-          id
-          ... on Balanse_KursRegister {
+
+          ... on Balanse_kurs_register_Entry {
             title
             inputs: registerForm {
               __typename
-              ... on Balanse_RegisterFormTextInput {
+              ... on Balanse_registerForm_textInput_BlockType {
                 question
                 placeholder
                 description

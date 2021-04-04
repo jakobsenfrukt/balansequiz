@@ -11,9 +11,9 @@ const Quiz = ({ data }) => {
   const [showCorrectAnswers, setShowCorrectAnswers] = useState(false)
 
   const { fields } = data
-  const tasks = fields.filter(x => x.__typename === "Balanse_QuizQuizTask")
+  const tasks = fields.filter(x => x.__typename === "Balanse_quiz_quizTask_BlockType")
   const feedbacks = fields
-    .filter(x => x.__typename === "Balanse_QuizQuizFeedback")
+    .filter(x => x.__typename === "Balanse_quiz_quizFeedback_BlockType")
     .sort((a, b) => (a.correctGte < b.correctGte ? 1 : -1))
 
   const task = tasks[currentTask]
