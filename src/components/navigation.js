@@ -75,7 +75,7 @@ export const NavigationWrapper = ({ children, pageContext, navigate }) => {
   const nextSlide = () => {
     setHasClickedArrow(true)
     if (!moreSlides && moreChapters) {
-      navigate(`/${pageContext.nextChapterPath}/`)
+      navigate(pageContext.nextChapterPath)
       return
     }
     const { next } = findNearbySlides()

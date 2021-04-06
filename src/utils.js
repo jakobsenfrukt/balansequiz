@@ -8,6 +8,15 @@ export const useHasMounted = () => {
   return hasMounted
 }
 
+export const stripPrefix = (needle, haystack) => {
+  if (haystack.indexOf(needle) === 0) {
+    return haystack.slice(needle.length)
+  }
+  return haystack
+}
+
+export const stripSectionPrefixFromUri = uri => stripPrefix("kurs", uri)
+
 export const uuidv4 = () => {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c => {
     let r = (Math.random() * 16) | 0,

@@ -12,9 +12,8 @@ import Risks from "../components/risk"
 import PaLinje from "../components/palinje"
 import Register from "../components/register"
 
-const ChapterHeader = ({ currentIndex, currentTitle }) => {
+const ChapterHeader = ({ chapters, currentIndex, currentTitle }) => {
   const [menuOpen, setMenuOpen] = useState(false)
-  const { chapters } = useChapterData()
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
@@ -67,6 +66,8 @@ const ChapterHeader = ({ currentIndex, currentTitle }) => {
 }
 
 const ChapterTemplate = ({
+  id,
+  chaptersInCourse,
   title,
   slug,
   index,
@@ -80,7 +81,11 @@ const ChapterTemplate = ({
 }) => {
   return (
     <>
-      <ChapterHeader currentIndex={index} currentTitle={title} />
+      <ChapterHeader
+        chapters={chaptersInCourse}
+        currentIndex={index}
+        currentTitle={title}
+      />
       {slides.map((slide, index) => (
         <Slide key={"slide" + index} data={slide} index={index} />
       ))}
@@ -102,9 +107,10 @@ ChapterTemplate.propTypes = {
 }
 
 const ChapterPage = ({ data, pageContext, navigate }) => {
-  const { index } = pageContext
+  const { index, chaptersInCourse } = pageContext
   const { chapter } = data.balanse
   const {
+    id,
     title,
     socialTitle,
     socialDescription,
@@ -114,7 +120,7 @@ const ChapterPage = ({ data, pageContext, navigate }) => {
   } = chapter
 
   const registerFormOnSend = () => {
-    navigate(`/${pageContext.nextChapterPath}`)
+    navigate(pageContext.nextChapterPath)
   }
 
   // Limit to one fancy section per chapter for now
@@ -136,6 +142,8 @@ const ChapterPage = ({ data, pageContext, navigate }) => {
     <Layout>
       <Seo title={socialTitle || title} description={socialDescription} />
       <ChapterTemplate
+        id={id}
+        chaptersInCourse={chaptersInCourse}
         title={title}
         slug={slug}
         index={index}
