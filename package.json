@@ -8,6 +8,7 @@
     "Jonas Braathen <jonas@ponas.no> (https://jonasbraathen.no)"
   ],
   "dependencies": {
+    "esm": "^3.2.25",
     "gatsby": "^3.2.1",
     "gatsby-image": "^3.2.0",
     "gatsby-plugin-manifest": "^3.2.0",
