@@ -6,6 +6,14 @@ export const useCourseData = () => {
     graphql`
       query {
         balanse {
+          index: entry(section: ["courseIndex"], limit: 1) {
+            ... on Balanse_courseIndex_courseIndex_Entry {
+              overskrift
+              ingress
+              body
+            }
+          }
+
           courses: entries(section: ["kurs"], type: ["Kurs"]) {
             __typename
             id
@@ -26,10 +34,10 @@ export const useCourseData = () => {
     `
   )
 
-  let { courses } = queried
+  let { courses, index } = queried
   courses.forEach(course => {
     course.path = stripSectionPrefixFromUri(course.uri)
   })
 
-  return { courses: courses }
+  return { courses: courses, index: index }
 }
