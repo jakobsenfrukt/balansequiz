@@ -14,6 +14,11 @@ export const useCourseData = () => {
 
             ... on Balanse_kurs_kurs_Entry {
               ingress
+              toppbilde {
+                id
+                url
+                title
+              }
             }
           }
         }

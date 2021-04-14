@@ -10,19 +10,25 @@ const Index = ({ data }) => {
   return (
     <Layout>
       <Seo title="Kursoversikt" />
-      <section className="slide">
-        <div className="slide__content">
-          <h1>Kursoversikt</h1>
-          <div className="courses">
-            {courses.map(course => (
-              <div className="course">
-                <h2>
+      <section className="course-index">
+        <h1>Kursoversikt</h1>
+        <div className="course-list">
+          {courses.map(course => (
+            <div className="course">
+              {course.toppbilde.length ? 
+                <div className="course-image">
+                  <img src={course.toppbilde[0].url} alt={course.toppbilde[0].title} />
+                </div>
+              : ''}
+              <div className="course-text">
+                <h2 class="course-title">
                   <Link to={course.path}>{course.title}</Link>
                 </h2>
-                <p>{course.ingress}</p>
+                <div class="course-meta">8 deler - ca. 2 timer</div>
+                <p class="course-lead">{course.ingress}</p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
     </Layout>
