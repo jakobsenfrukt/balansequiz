@@ -3,12 +3,13 @@ import { Link } from "gatsby"
 import Seo from "../components/seo"
 import Layout from "../components/layout"
 import { useCourseData } from "../hooks/use-course-data"
+import Logo from "../images/BKlogo.svg"
 
 const Index = ({ data }) => {
   const { index, courses } = useCourseData()
 
   return (
-    <Layout>
+    <Layout hideFooter>
       <Seo title="Kursoversikt" />
       <section className="course-index">
         <h1>{index.overskrift}</h1>
@@ -27,12 +28,13 @@ const Index = ({ data }) => {
                 ""
               )}
               <div className="course-text">
-                <h2 class="course-title">
-                  <Link to={course.path}>{course.title}</Link>
-                </h2>
-                <div class="course-meta">8 deler - ca. 2 timer</div>
-                <p class="course-lead">{course.ingress}</p>
+                <h2 className="course-title">{course.title}</h2>
+                {course.metainfo && 
+                  <div className="course-meta">{course.metainfo}</div>
+                }
+                <p className="course-lead">{course.ingress}</p>
               </div>
+              <Link to={course.path} class="course-link"></Link>
             </div>
           ))}
         </div>
@@ -40,6 +42,17 @@ const Index = ({ data }) => {
           className="course-index-body"
           dangerouslySetInnerHTML={{ __html: index.body }}
         />
+        <footer className="index-footer">
+          <a
+            href="https://balansekunstprosjektet.no"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>Et initiativ fra</span>
+            <br />
+            <img className="logo" src={Logo} alt="Logo for Balansekunstprosjektet" />
+          </a>
+        </footer>
       </section>
     </Layout>
   )

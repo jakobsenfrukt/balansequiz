@@ -22,6 +22,7 @@ export const useCourseData = () => {
 
             ... on Balanse_kurs_kurs_Entry {
               ingress
+              metainfo
               toppbilde {
                 id
                 url
