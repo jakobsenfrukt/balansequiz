@@ -21,6 +21,7 @@ export const useCourseData = () => {
             uri
 
             ... on Balanse_kurs_kurs_Entry {
+              showInCourseIndex
               ingress
               metainfo
               toppbilde {
