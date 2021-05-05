@@ -12,20 +12,23 @@ const Index = ({ data }) => {
   return (
     <Layout hideFooter>
       <Seo title="Kursoversikt" />
+      <div class="index-header">
+        <a href="https://balansemerket.no">Til balansemerket.no &#8599;</a>
+      </div>
       <section className="course-index">
         <h1>{index.overskrift}</h1>
         <p className="course-index-lead">{index.ingress}</p>
         <div className="course-list">
           {visibleCourses.map(course => (
             <div className="course">
-              {course.toppbilde.length && (
+              {course.toppbilde.length ? (
                 <div className="course-image">
                   <img
                     src={course.toppbilde[0].url}
                     alt={course.toppbilde[0].title}
                   />
                 </div>
-              )}
+              ) : ("")}
               <div className="course-text">
                 <h2 className="course-title">{course.title}</h2>
                 {course.metainfo && (
@@ -36,10 +39,16 @@ const Index = ({ data }) => {
               <Link to={course.path} class="course-link"></Link>
             </div>
           ))}
+          {visibleCourses.length === 1 && (
+            <div className="course-more-incoming"><div>Flere kurs lanseres i løpet av sommeren!</div></div>
+          )}
+          {visibleCourses.length === 1 && (
+            <div className="course-more-incoming"></div>
+          )}
+          {visibleCourses.length === 2 && (
+            <div className="course-more-incoming"></div>
+          )}
         </div>
-        {visibleCourses.length === 1 && (
-          <div className="course-more-incoming">Flere kurs lanseres snart!</div>
-        )}
         <div
           className="course-index-body"
           dangerouslySetInnerHTML={{ __html: index.body }}

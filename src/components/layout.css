@@ -227,7 +227,8 @@ blockquote:before {
 
 
 
-.chapter-header {
+.chapter-header,
+.index-header {
   position: fixed;
   top: 0;
   right: 0;
@@ -246,14 +247,17 @@ blockquote:before {
   margin-left: .6rem;
 }
 
-.chapter-header a {
+.chapter-header a,
+.index-header a {
   color: #fff;
+  text-decoration: none;
 }
 
 .chapter-header-nav-closed .chapter-header-current:hover,
 .chapter-header-nav:hover,
 .chapter-nav-close:hover,
-.chapter-header-nav-open .chapter-header-nav-current {
+.chapter-header-nav-open .chapter-header-nav-current,
+.index-header:hover {
   font-weight: bold;
 }
 
@@ -1304,6 +1308,14 @@ input[type="text"]:focus, input[type="text"]:hover {
   background: #FFF7D2;
 }
 
+.course-index h1,
+.course-index-lead {
+  text-align: left;
+  width: 42rem;
+  max-width: 100%;
+  margin: 0 0 1rem;
+}
+
 .course-list {
   padding: 0;
   margin: 3rem auto;
@@ -1365,7 +1377,6 @@ input[type="text"]:focus, input[type="text"]:hover {
 
 .course-title {
   font-size: 1.8rem;
-  text-decoration: underline;
 }
 
 .course-meta {
@@ -1391,9 +1402,24 @@ input[type="text"]:focus, input[type="text"]:hover {
   z-index: 0;
 }
 
+.course-more-incoming {
+  background: rgba(255, 255, 255, .4);
+  margin-bottom: 2rem;
+  border-radius: 20px;
+  position: relative;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 1100px) {
   .course-list {
     grid-template-columns: 1fr 1fr;
+  }
+  .course-more-incoming:last-of-type {
+    display: none;
   }
 }
 @media (max-width: 700px) {
