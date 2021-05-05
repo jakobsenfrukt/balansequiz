@@ -253,6 +253,12 @@ blockquote:before {
   text-decoration: none;
 }
 
+@media (max-width: 800px) {
+  .index-header a {
+    display: none;
+  }
+}
+
 .chapter-header-nav-closed .chapter-header-current:hover,
 .chapter-header-nav:hover,
 .chapter-nav-close:hover,
