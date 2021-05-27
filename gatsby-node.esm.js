@@ -10,6 +10,7 @@ const addPathsToChapters = (chapters, course) => {
     if (index === 0) {
       pagePath = stripSectionPrefixFromUri(course.uri)
     }
+    pagePath += '/'
     chapter.path = pagePath
   })
   return chapters

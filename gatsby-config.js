@@ -22,6 +22,12 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-plugin-force-trailing-slashes`,
+      options: {
+        excludedPaths: [`/404.html`],
+      },
+    },
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -38,15 +44,15 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-matomo',
+      resolve: "gatsby-plugin-matomo",
       options: {
-        siteId: '6',
-        matomoUrl: '//a.444.no',
-        siteUrl: 'https://kurs.balansemerket.no',
-        matomoJsScript: 'js/',
+        siteId: "6",
+        matomoUrl: "//a.444.no",
+        siteUrl: "https://kurs.balansemerket.no",
+        matomoJsScript: "js/",
         disableCookies: true,
         dev: false, // set to true to test tracking in develop
-      }
+      },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

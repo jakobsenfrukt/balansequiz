@@ -38,7 +38,7 @@ export const useCourseData = () => {
 
   let { courses, index } = queried
   courses.forEach(course => {
-    course.path = stripSectionPrefixFromUri(course.uri)
+    course.path = stripSectionPrefixFromUri(course.uri) + '/'
   })
 
   return { courses: courses, index: index }
